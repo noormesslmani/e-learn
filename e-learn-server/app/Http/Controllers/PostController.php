@@ -29,7 +29,7 @@ class PostController extends Controller
                 "message" => "Validation failed"
             ]);
         }
-        $full_name=$request->name;
+        $full_name=$request->full_name;
         $phone=$request->phone;
         $email=$request->email;
         $username=$request->username;
@@ -60,5 +60,9 @@ class PostController extends Controller
             'created_at'=>date('d-m-y h:i:s')
         ]);  
         return response()->json(["result" => "ok"], 201);  
+    }
+
+    public function addInstructor(Request $request){
+        return $this->createAccount($request);
     }
 }

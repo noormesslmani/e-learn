@@ -34,4 +34,5 @@ class AdminController extends Controller
         }
         return response()->json(["result" => "Not Acceptable"], 406);
     }
+
 }
