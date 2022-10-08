@@ -18,7 +18,6 @@ class CreateAssignmentsTable extends Migration
             $table->text('description');
             $table->timestamp('created_at');
             $table->date('deadline');
-            $table->foreignId('teacher_id')->constrained('users');
             $table->foreignId('course_id')->constrained('courses');
         });
     }
