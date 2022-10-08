@@ -14,21 +14,10 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
-    'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-
-        'api' => [
-                'driver' => 'jwt',
-                'provider' => 'users',
-        ],
-    ],
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -49,6 +38,9 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
+            'provider' => 'users',
+        ],'api' => [
+            'driver' => 'jwt',
             'provider' => 'users',
         ],
     ],
@@ -101,7 +93,7 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
-            'expire' => 60,
+            'expire' => 120,
             'throttle' => 60,
         ],
     ],
