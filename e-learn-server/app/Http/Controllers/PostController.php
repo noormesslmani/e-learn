@@ -65,4 +65,8 @@ class PostController extends Controller
     public function addInstructor(Request $request){
         return $this->createAccount($request);
     }
+
+    public function addStudent(Request $request){
+        return $this->createAccount($request);
+    }
 }

@@ -8,7 +8,8 @@ Route::group(["middleware"=> "auth:api"],function(){
     Route::post('/assignment', [TeacherController::class, 'createAssignment']);
     Route::post('/announcement', [TeacherController::class, 'createAnnouncement']);
     Route::post('/course', [AdminController::class, 'addCourse']);
-    Route::post('/instructor', [PostController::class, 'addInstructor']);
+    Route::post('/instructoradd', [PostController::class, 'addInstructor']);
+    Route::post('/studentadd', [PostController::class, 'addStudent']);
 });
 Route::post('/register', [PostController::class, 'createAccount']);
 Route::post('/login', [AuthController::class, 'login']);
