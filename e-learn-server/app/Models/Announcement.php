@@ -8,4 +8,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 class Announcement extends Model
 {
     use HasFactory;
+    function teacher(){
+        return $this->belongsTo(User::class,'teacher_id');
+    }
 }
