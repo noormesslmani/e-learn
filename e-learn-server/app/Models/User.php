@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+// use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Laravel\Sanctum\HasApiTokens;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-
-class User extends Authenticatable
+use Jenssegers\Mongodb\Eloquent\Model;
+use Jenssegers\Mongodb\Auth\User as Authenticatable;
+class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
+    use HasApiTokens, Notifiable;
+    protected $connection = 'mongodb';
+    protected $collection = 'users';
     protected $fillable = [
         'name',
         'email',
@@ -42,5 +43,15 @@ class User extends Authenticatable
 
     public function enrollments(){
         return $this->belongsToMany(Course::class,'enrollments','student_id','course_id')->as('enrollment');
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
