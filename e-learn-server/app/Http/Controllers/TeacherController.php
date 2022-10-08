@@ -52,5 +52,13 @@ class TeacherController extends Controller
         ]);
         return response()->json(["result" => "ok"], 201); 
     }
+    public function getCourses(){
+        try{
+            $data=Course::where('teacher_id', Auth::user()['_id'])->get();}
+        catch(\Exception $e){
+            return response()->json(["result" => $e->getMessage()], 404); 
+        }    
+        return response()->json(["result" => "ok", "data"=>$data], 201); 
+    }
     
 }
