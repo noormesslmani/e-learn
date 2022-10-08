@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Type;
 use App\Models\Assignment;
@@ -36,6 +37,20 @@ class TeacherController extends Controller
         ]);
         return response()->json(["result" => "ok"], 201); 
     }
-
+    public function createAnnouncement(Request $request){
+        try{
+            $course_id=Course::select('id')->where('name',$request->name)->get()[0]['_id'];
+        }
+        catch(\Exception $e){
+            return response()->json(["result" => $e->getMessage()], 404); 
+        }
+        Announcement::insert([
+            'teacher_id' => Auth::user()['_id'],
+            'course_id' => $course_id,
+            'details' => $request->details,
+            'created_at'=> date('d-m-y h:i:s')
+        ]);
+        return response()->json(["result" => "ok"], 201); 
+    }
     
 }
