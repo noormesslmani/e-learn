@@ -15,8 +15,8 @@ class CreateEnrollmentsTable extends Migration
     {
         Schema::create('enrollements', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained('users');
-            $table->foreignId('course_id')->constrained('courses');
+            $table->foreignId('student_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();;
+            $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete()->cascadeOnUpdate();;
             $table->timestamp('created_at');
         });
         
@@ -29,6 +29,6 @@ class CreateEnrollmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enrolledin');
+        Schema::dropIfExists('enrollments');
     }
 }

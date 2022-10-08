@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->string('password');
-            $table->foreignId('user_type_id')->constrained('user_types');
+            $table->foreignId('user_type_id')->constrained('user_types')->cascadeOnDelete()->cascadeOnUpdate();;
             $table->mediumInteger('phone');
             $table->string('profile_picture', 255);
             $table->timestamp('created_at');
