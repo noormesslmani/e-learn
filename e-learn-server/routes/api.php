@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TeacherController;
 Route::group(["middleware"=> "auth:api"],function(){
     Route::post('/assignment', [TeacherController::class, 'createAssignment']);
     Route::post('/announcement', [TeacherController::class, 'createAnnouncement']);
