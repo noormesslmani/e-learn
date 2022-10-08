@@ -29,7 +29,7 @@ class User extends Authenticatable
     ];
 
     function type(){
-        return $this->belongsTo(User_type::class,'user_type_id');
+        return $this->belongsTo(Type::class,'user_type_id');
     }
     
     function courses(){
