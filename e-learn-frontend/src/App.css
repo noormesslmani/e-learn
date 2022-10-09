@@ -52,7 +52,7 @@ h1{
   justify-content: center;
 }
  
-.error{
+.error, .exist{
   color: red;
 }
  

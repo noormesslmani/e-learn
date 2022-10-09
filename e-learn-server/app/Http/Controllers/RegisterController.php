@@ -26,20 +26,20 @@ class RegisterController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                "message" => "Validation failed"
+                "result" => "Validation failed"
             ]);
         }
         $type=$request->type;
         $user_type_id=Type::select('id')->where('type',$type)->get()[0]["_id"];
         if(User::where('email',$request->email)->exists() ){
             return response()->json([
-                "data" => "email already exists"
+                "result" => "email already exists"
             ]);
         }
         //check if username is taken
         if(User::where('username',$request->username)->exists() ){
             return response()->json([
-                "data" => "username is taken"
+                "result" => "username is taken"
             ]);
         }
         //insert data in users

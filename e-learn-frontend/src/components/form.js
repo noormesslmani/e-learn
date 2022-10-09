@@ -11,6 +11,7 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
   const [username, setUsername] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
+  const [exist, setExist] = useState(false);
   const baseURL='http://127.0.0.1:8000/api/v1/';
   const handleName = (e) => {
     setName(e.target.value);
@@ -38,8 +39,6 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
       setError(true);
     } else {
       register();
-      setSubmitted(true);
-      setError(false);
     }
   };
   function register(){
@@ -54,6 +53,16 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
     let res = axios.post(baseURL+"register",payload)
     .then(function (response) {
         console.log(response.data);
+        if (response.data.result=='ok'){
+          setSubmitted(true);
+          setError(false);
+          setExist(false);
+        }
+        else{
+          setExist(true)
+          setSubmitted(false);
+          setError(false);
+        }
         return response.data;
     })
     .catch(function (error) {
@@ -71,6 +80,13 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
     return (
       <div className="error" style={{display: error ? 'block' : 'none',}}>
         <p>Please enter all the fields</p>
+      </div>
+    );
+  };
+  const alreadyexistMessage = () => {
+    return (
+      <div className="exist" style={{display: exist ? 'block' : 'none',}}>
+        <p>Email or username is taken </p>
       </div>
     );
   };
@@ -106,6 +122,7 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
       <div className="messages">
         {errorMessage()}
         {successMessage()}
+        {alreadyexistMessage()}
       </div>
     </div>
   );
