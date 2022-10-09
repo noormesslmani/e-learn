@@ -17,6 +17,17 @@ class AdminController extends Controller
     public function addCourse(Request $request){
         $admin = Auth::user();
         $type= Auth::user()->type()->get()[0]['type'];
+        $validator = Validator::make($request->all(), [
+            "name"=>"required",
+            "username"=>"required",
+            'description' =>'required',
+            'fees' =>'required|Integer',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                "message" => "Validation failed"
+            ]);
+        }
         if ($type=='admin'){
             try{
                 $user_type=User::where('username',$request->username)->first()->type()->get()[0]['type'];
