@@ -15,6 +15,15 @@ use Validator;
 class TeacherController extends Controller
 {
     public function createAssignment(Request $request){
+        $validator = Validator::make($request->all(), [
+            "name"=>"required",
+            "description"=>"required",
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                "message" => "Validation failed"
+            ]);
+        }
         try{
             $course_id=Course::select('id')->where('name',$request->name)->get()[0]['_id'];
         }
@@ -28,6 +37,7 @@ class TeacherController extends Controller
         ]);
         return response()->json(["result" => "ok"], 201); 
     }
+
     public function createAnnouncement(Request $request){
         try{
             $course_id=Course::select('id')->where('name',$request->name)->get()[0]['_id'];
