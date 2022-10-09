@@ -15,14 +15,6 @@ use Validator;
 class TeacherController extends Controller
 {
     public function createAssignment(Request $request){
-        $validator = Validator::make($request->all(), [
-            "deadline"=>"required|date_format:d-m-Y H:i:s",
-        ]);
-        if ($validator->fails()) {
-            return response()->json([
-                "message" => "Validation failed"
-            ]);
-        }
         try{
             $course_id=Course::select('id')->where('name',$request->name)->get()[0]['_id'];
         }
@@ -31,7 +23,6 @@ class TeacherController extends Controller
         }
         Assignment::insert([
             'desciption' =>$request->description,
-            'deadline' => $request->deadline,
             'created_at' => date('d-m-y h:i:s'),
             'course_id'=> $course_id
         ]);
