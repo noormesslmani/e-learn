@@ -40,6 +40,15 @@ class TeacherController extends Controller
     }
 
     public function createAnnouncement(Request $request){
+        $validator = Validator::make($request->all(), [
+            "name"=>"required",
+            "details"=>"required",
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                "message" => "Validation failed"
+            ]);
+        }
         try{
             $course_id=Course::select('id')->where('name',$request->name)->get()[0]['_id'];
         }
@@ -47,7 +56,7 @@ class TeacherController extends Controller
             return response()->json(["result" => $e->getMessage()], 404); 
         }
         Announcement::insert([
-            'teacher_id' => Auth::user()['_id'],
+            'teacher_id' => Auth::user()->id,
             'course_id' => $course_id,
             'details' => $request->details,
             'created_at'=> date('d-m-y h:i:s')
