@@ -12,6 +12,7 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
   const [exist, setExist] = useState(false);
+  const [invalid, setInvalid] = useState(false);
   const baseURL='http://127.0.0.1:8000/api/v1/';
   const handleName = (e) => {
     setName(e.target.value);
@@ -38,7 +39,12 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
     if (name === '' || email === '' || password === '' || phone === '' || username === '') {
       setError(true);
     } else {
-      register();
+      if(passwordFormat(password)){
+        register();
+      }
+      else{
+        setInvalid(true);
+      }
     }
   };
   function register(){
@@ -57,11 +63,13 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
           setSubmitted(true);
           setError(false);
           setExist(false);
+          setInvalid(false);
         }
         else{
-          setExist(true)
+          setExist(true);
           setSubmitted(false);
           setError(false);
+          setInvalid(false);
         }
         return response.data;
     })
@@ -90,6 +98,21 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
       </div>
     );
   };
+  const invalidPasswordMessage = () => {
+    return (
+      <div className="invalid" style={{display: invalid ? 'block' : 'none',}}>
+        <p>The password must at least 8 characters long. <br/>
+        It must contain at least one uppercase letter, <br/>
+        one lower case letter,<br/>
+        and one digit number
+        </p>
+      </div>
+    );
+  };
+  function passwordFormat(password) {
+    const expression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    return expression.test(password);
+  }
   return (
     <div className="form" style={{display: displayRegister ? 'block' : 'none',}} >
       <div>
@@ -123,6 +146,7 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
         {errorMessage()}
         {successMessage()}
         {alreadyexistMessage()}
+        {invalidPasswordMessage()}
       </div>
     </div>
   );
