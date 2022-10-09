@@ -1,0 +1,61 @@
+body{
+  background-image: url("background.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+h1{
+  color: white;
+  font-size: 40px;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px 50px;
+}
+ .form{
+  margin-top: 10px;
+  align-self: flex-start;
+  background-color:gainsboro;
+  padding: 20px 40px;
+  border-radius: 10px;
+ }
+.label{
+  display: block;
+  font-size: larger;
+  padding: 5px;
+}
+ 
+.input{
+  font-size: larger;
+  padding: 5px;
+  margin: 2px;
+  border: none;
+  border-radius: 5px;
+}
+.btn{
+  background-color: lightblue;
+  border-radius: 5px;
+  border: none;
+  font-size: larger;
+  display: block;
+  padding: 5px;
+  margin: 10px auto;
+  cursor: pointer;
+}
+.btn:active{
+ scale: 0.9;
+}
+ 
+.messages{
+  display: flex;
+  justify-content: center;
+}
+ 
+.error{
+  color: red;
+}
+ 
+.success{
+  color: green;
+}
