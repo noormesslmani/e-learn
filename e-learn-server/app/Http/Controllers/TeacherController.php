@@ -63,16 +63,24 @@ class TeacherController extends Controller
 
     public function getAssignments(Request $request){
         try{
-            $count=Assignment::where('course_id', $request->course_id)->get();}
+            $data=Assignment::where('course_id', $request->course_id)->get();}
         catch(\Exception $e){
             return response()->json(["result" => $e->getMessage()], 404); 
         }  
-        return response()->json(["result" => "ok", "data"=>$count], 201); 
+        return response()->json(["result" => "ok", "data"=>$data], 201); 
+    }
+    public function getAnnouncements(Request $request){
+        try{
+            $data=Announcement::where('course_id', $request->course_id)->get();}
+        catch(\Exception $e){
+            return response()->json(["result" => $e->getMessage()], 404); 
+        }  
+        return response()->json(["result" => "ok", "data"=>$data], 201); 
     }
 
-    public function countStudents($course_id){
+    public function countStudents(Request $request){
         try{
-            $count = Enrollment::join('courses',$course_id,'courses.id')->count();}
+            $count = Enrollment::join('courses',$request->course_id,'courses.id')->count();}
         catch(\Exception $e){
             return response()->json(["result" => $e->getMessage()], 404); 
         }    
