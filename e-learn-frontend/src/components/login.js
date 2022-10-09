@@ -1,44 +1,56 @@
 import React, {useState} from 'react';
 import '../App.css'
- 
+import axios from 'axios';
 export default function LoginForm({ displayLogin, handleSwitch }) {
  
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
- 
-  
+  const [invalid, setInvalid] = useState(false);
+  const baseURL='http://127.0.0.1:8000/api/v1/';
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    setSubmitted(false);
   };
   const handlePassword = (e) => {
     setPassword(e.target.value);
-    setSubmitted(false);
   };
  
   const handleSubmit = (e) => {
     e.preventDefault();
     if ( email === '' || password === '' ) {
       setError(true);
+      setInvalid(false);
     } else {
-      setSubmitted(true);
+      signin();
       setError(false);
     }
   };
-  const successMessage = () => {
-    return (
-      <div className="success" style={{display: submitted ? 'block' : 'none',}}>
-        <p>Successfully registered!</p>
-      </div>
-    );
-  };
+  function signin(){
+    let payload = {
+      email: email,
+      password: password,
+    };
+    let res = axios.post(baseURL+"login",payload)
+    .then(function (response) {
+        console.log(response.data);
+        return response.data;
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+  }
   const errorMessage = () => {
     return (
       <div className="error" style={{display: error ? 'block' : 'none',}}>
         <p>Please enter all the fields</p>
+      </div>
+    );
+  };
+  const invalidMessage = () => {
+    return (
+      <div className="invalid" style={{display: invalid ? 'block' : 'none',}}>
+        <p>Invalid credentials, please try again</p>
       </div>
     );
   };
@@ -61,7 +73,7 @@ export default function LoginForm({ displayLogin, handleSwitch }) {
       </form>
       <div className="messages">
         {errorMessage()}
-        {successMessage()}
+        {invalidMessage()}
       </div>
     </div>
   );
