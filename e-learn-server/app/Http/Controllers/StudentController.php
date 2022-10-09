@@ -16,7 +16,7 @@ use Validator;
 
 class StudentController extends Controller
 {
-    public function getAllCourses(){
+    public function viewAllCourses(){
         return response()->json(["result" => "ok", "data"=>Course::all()], 201); 
     }
 
