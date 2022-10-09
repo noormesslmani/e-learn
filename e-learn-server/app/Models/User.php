@@ -19,37 +19,20 @@ class User extends Authenticatable implements JWTSubject
         'email',
         'password',
     ];
-
     protected $hidden = [
         'password',
         'remember_token',
     ];
-
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
     function type(){
         return $this->belongsTo(Type::class,'user_type_id');
     }
-    
-    function courses(){
-        return $this->hasMany(Course::class,'teacher_id');
-    }
-
-    function announcements(){
-        return $this->hasMany(Announcement::class,'teacher_id');
-    }
-
-    public function enrollments(){
-        return $this->belongsToMany(Course::class,'enrollments','student_id','course_id')->as('enrollment');
-    }
-
     public function getJWTIdentifier()
     {
         return $this->getKey();
     }
-
     public function getJWTCustomClaims()
     {
         return [];
