@@ -41,7 +41,7 @@ class StudentController extends Controller
     }
     public function getStudentAssignments(Request $request){
         $course_id=$request->course_id;
-        if (Enrollment::where('course_id',$course_id)->exists()){
+        if (Enrollment::where('course_id',$course_id)->where('student_id',Auth::user()->id)->exists()){
             $data=Assignment::where('course_id',$course_id)->get();
             return response()->json(['data'=>$data ,"result" => "ok"], 201);
         } 
