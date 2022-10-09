@@ -16,13 +16,8 @@ class AdminController extends Controller
 {
     public function addCourse(Request $request){
         $admin = Auth::user();
-        try{
-            $type_id=User::where('username',$request->username)->select('user_type_id')->get()[0]['user_type_id'];
-        }
-        catch(\Exception $e){
-            return response()->json(["result" => $e->getMessage()], 404); 
-        }
-        if ($type_id==Type::select('id')->where("type",'teacher')->get()[0]['_id']){
+        $type= Auth::user()->type()->get()[0]['type'];
+        if ($type=='admin'){
             $id=User::select('id')->where('username',$request->username)->get()[0]['_id'];
             Course::insert([
                 'name' =>$request->name,
@@ -32,7 +27,6 @@ class AdminController extends Controller
             ]); 
             return response()->json(["result" => "ok"], 201); 
         }
-        return response()->json(["result" => "Not Acceptable"], 406);
+        return response()->json(["result" => "Unauthorized"], 406);
     }
-
 }
