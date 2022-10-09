@@ -19,11 +19,7 @@ class StudentController extends Controller
         return response()->json(["result" => "ok", "data"=>Course::all()], 201); 
     }
 
-    // public function getEnrolledCourses(){
-    //     $student_id=Auth::user()->select('id')->get()[0]['_id'];
-    //     print($student_id);
-    //     // return response()->json(["result" => "ok", "data"=>Course::all()], 201); 
-    // }
+    
     public function enroll(Request $request){
         try{
             $course_id=Course::select('id')->where('name',$request->name)->get()[0]['_id'];
@@ -32,7 +28,7 @@ class StudentController extends Controller
             return response()->json(["result" => $e->getMessage()], 404); 
         }
         Enrollment::insert([
-            'student_id' =>Auth::user()->select('id')->get()[0]['_id'],
+            'student_id' =>Auth::user()->id,
             'course_id' => $course_id,
             'created_at' => date('d-m-y h:i:s'),
         ]);
