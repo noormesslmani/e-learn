@@ -19,7 +19,18 @@ class StudentController extends Controller
         return response()->json(["result" => "ok", "data"=>Course::all()], 201); 
     }
 
-    
+    public function getEnrolledCourses(){
+        $student_id=Auth::user()->id;
+        $enrollments=Enrollment::where('student_id',$student_id)->select('course_id')->get();
+        $courses=[];
+        $details=[];
+        foreach($enrollments as $enrollment){
+            $courses[]=$enrollment['course_id'];
+            $details[]=Course::where('_id',$enrollment['course_id'])->get()[0];
+        }
+        return response()->json(["result" => "ok","courses" => $courses, "details"=>$details], 201); 
+        
+    }
     public function enroll(Request $request){
         try{
             $course_id=Course::select('id')->where('name',$request->name)->get()[0]['_id'];
