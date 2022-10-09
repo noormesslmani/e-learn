@@ -63,7 +63,7 @@ class TeacherController extends Controller
 
     public function getAssignments(Request $request){
         try{
-            $count=Assignment::where('course_id', $request->course_id)->count();}
+            $count=Assignment::where('course_id', $request->course_id)->get();}
         catch(\Exception $e){
             return response()->json(["result" => $e->getMessage()], 404); 
         }  
