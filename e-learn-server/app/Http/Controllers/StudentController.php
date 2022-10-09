@@ -48,7 +48,16 @@ class StudentController extends Controller
         return response()->json(["result" => "Access denied"], 404);
     }
 
-    public function submitAssignment(Request $request){
+    public function submitAssignment(Request $request){ 
+        $validator = Validator::make($request->all(), [
+            "assignment_id"=>"required",
+            "solution"=>"required",
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                "message" => "Validation failed"
+            ]);
+        }
         $assignment_id=$request->assignment_id;
         $student_id=Auth::user()->id;
         if(Submission::where('student_id',$student_id)->where('assignment_id',$assignment_id)->exists()){
