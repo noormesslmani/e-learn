@@ -29,6 +29,7 @@ class RegisterController extends Controller
                 "message" => "Validation failed"
             ]);
         }
+
         $full_name=$request->full_name;
         $phone=$request->phone;
         $email=$request->email;
@@ -50,7 +51,7 @@ class RegisterController extends Controller
         }
         //insert data in users
         User::insert([
-            'name' =>$full_name,
+            'full_name' =>$full_name,
             'email' => $email,
             'password' => $password,
             'username'=>$username,
