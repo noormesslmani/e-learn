@@ -12,7 +12,7 @@ use App\Models\Enrollment;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Validator;
-class PostController extends Controller
+class RegisterController extends Controller
 {
     function createAccount(Request $request){
     

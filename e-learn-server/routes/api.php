@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
@@ -16,8 +16,8 @@ Route::group(["middleware"=> "auth:api"],function(){
     
     Route::post('/course', [AdminController::class, 'addCourse']);
    
-    Route::post('/instructoradd', [PostController::class, 'addInstructor']);
-    Route::post('/studentadd', [PostController::class, 'addStudent']);
+    Route::post('/instructoradd', [RegisterController::class, 'addInstructor']);
+    Route::post('/studentadd', [RegisterController::class, 'addStudent']);
 
     Route::get('/getallcourses', [StudentController::class, 'getAllCourses']);
     Route::get('/getenrolledcourses', [StudentController::class, 'getEnrolledCourses']);
@@ -25,6 +25,6 @@ Route::group(["middleware"=> "auth:api"],function(){
     Route::post('/getstudentassignments', [StudentController::class, 'getStudentAssignments']);
     Route::post('/submitassignment', [StudentController::class, 'submitAssignment']);
 });
-Route::post('/register', [PostController::class, 'createAccount']);
+Route::post('/register', [RegisterController::class, 'createAccount']);
 Route::post('/login', [AuthController::class, 'login']);
 

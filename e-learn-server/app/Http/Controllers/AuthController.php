@@ -15,7 +15,6 @@ class AuthController extends Controller
             "email" => "required|email",
             "password" => "required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/"
         ]);
-      
         if (!$token = auth()->attempt(["email" => $request->email, "password" => $request->password])) {
             return response()->json([
                 'status' => 'error',
