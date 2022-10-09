@@ -1,7 +1,8 @@
 import './App.css';
 import React, { useState } from 'react';
-import RegisterForm from './components/form'
-import LoginForm from './components/login'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RegisterForm from './components/form';
+import LoginForm from './components/login';
 function App() {
   const [displayRegister, setDisplayRegister] = useState(true);
   const [displayLogin, setDisplayLogin] = useState(false);

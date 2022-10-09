@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../App.css'
- 
+import axios from 'axios';
 export default function RegisterForm({ displayRegister, handleSwitch }) {
  
 
@@ -11,7 +11,7 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
   const [username, setUsername] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
- 
+  const baseURL='http://127.0.0.1:8000/api/v1/';
   const handleName = (e) => {
     setName(e.target.value);
     setSubmitted(false);
@@ -37,10 +37,29 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
     if (name === '' || email === '' || password === '' || phone === '' || username === '') {
       setError(true);
     } else {
+      register();
       setSubmitted(true);
       setError(false);
     }
   };
+  function register(){
+    let payload = {
+      full_name: name,
+      phone: phone,
+      email: email,
+      username: username,
+      password: password,
+      type:'student'
+    };
+    let res = axios.post(baseURL+"register",payload)
+    .then(function (response) {
+        console.log(response.data);
+        return response.data;
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+  }
   const successMessage = () => {
     return (
       <div className="success" style={{display: submitted ? 'block' : 'none',}}>
@@ -75,7 +94,7 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
 
         <label className="label">Username</label>
         <input onChange={handleUsername} className="input"
-          value={email} type="text" placeholder='Username' />
+          value={username} type="text" placeholder='Username' />
 
         <label className="label">Password</label>
         <input onChange={handlePassword} className="input"
