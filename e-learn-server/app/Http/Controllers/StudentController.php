@@ -9,6 +9,7 @@ use App\Models\Assignment;
 use App\Models\Announcement;
 use App\Models\Course;
 use App\Models\Enrollment;
+use App\Models\Submission;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -53,6 +54,19 @@ class StudentController extends Controller
         return response()->json(["result" => "Access denied"], 404);
     }
 
-    
+    public function submitAssignment(Request $request){
+        $assignment_id=$request->assignment_id;
+        $student_id=Auth::user()->id;
+        if(Submission::where('student_id',$student_id)->where('assignment_id',$assignment_id)->exists()){
+            return response()->json(["result" => "Already Submitted"], 404);
+        }
+        Submission::insert([
+            'assignment_id' =>$assignment_id,
+            'student_id' => $student_id,
+            'solution' => $request->solution,
+            'created_at'=>date('d-m-y h:i:s')
+        ]);  
+        return response()->json(["result" => "ok"], 201);
+    }
 
 }

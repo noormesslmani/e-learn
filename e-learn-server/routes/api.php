@@ -23,6 +23,7 @@ Route::group(["middleware"=> "auth:api"],function(){
     Route::get('/getenrolledcourses', [StudentController::class, 'getEnrolledCourses']);
     Route::post('/enroll', [StudentController::class, 'enroll']);
     Route::post('/getstudentassignments', [StudentController::class, 'getStudentAssignments']);
+    Route::post('/submitassignment', [StudentController::class, 'submitAssignment']);
 });
 Route::post('/register', [PostController::class, 'createAccount']);
 Route::post('/login', [AuthController::class, 'login']);
