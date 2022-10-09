@@ -53,4 +53,6 @@ class StudentController extends Controller
         return response()->json(["result" => "Access denied"], 404);
     }
 
+    
+
 }

@@ -16,6 +16,7 @@ class CreateSubmissionsTable extends Migration
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('assigment_id')->constrained('assignments')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('student_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('solution');
             $table->timestamps('created_at');
         });
