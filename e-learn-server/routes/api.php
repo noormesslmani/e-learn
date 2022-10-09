@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\StudentController;
 Route::group(["middleware"=> "auth:api"],function(){
     Route::post('/assignment', [TeacherController::class, 'createAssignment']);
     Route::post('/announcement', [TeacherController::class, 'createAnnouncement']);
@@ -12,9 +13,13 @@ Route::group(["middleware"=> "auth:api"],function(){
     Route::post('/studentscount', [TeacherController::class, 'countStudents']);
     Route::post('/getassignments', [TeacherController::class, 'getAssignments']);
     Route::post('/getannouncements', [TeacherController::class, 'getAnnouncements']);
+    
     Route::post('/course', [AdminController::class, 'addCourse']);
+   
     Route::post('/instructoradd', [PostController::class, 'addInstructor']);
     Route::post('/studentadd', [PostController::class, 'addStudent']);
+
+    Route::get('/getallcourses', [StudentController::class, 'getAllCourses']);
 
 });
 Route::post('/register', [PostController::class, 'createAccount']);
