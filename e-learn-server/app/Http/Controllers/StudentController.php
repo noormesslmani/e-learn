@@ -28,8 +28,7 @@ class StudentController extends Controller
             $courses[]=$enrollment['course_id'];
             $details[]=Course::where('_id',$enrollment['course_id'])->get()[0];
         }
-        return response()->json(["result" => "ok","courses" => $courses, "details"=>$details], 201); 
-        
+        return response()->json(["result" => "ok","courses" => $courses, "details"=>$details], 201);  
     }
     public function enroll(Request $request){
         try{
@@ -45,4 +44,13 @@ class StudentController extends Controller
         ]);
         return response()->json(["result" => "ok"], 201); 
     }
+    public function getStudentAssignments(Request $request){
+        $course_id=$request->course_id;
+        if (Enrollment::where('course_id',$course_id)->exists()){
+            $data=Assignment::where('course_id',$course_id)->get();
+            return response()->json(['data'=>$data ,"result" => "ok"], 201);
+        } 
+        return response()->json(["result" => "Access denied"], 404);
+    }
+
 }
