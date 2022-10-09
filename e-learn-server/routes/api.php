@@ -20,7 +20,8 @@ Route::group(["middleware"=> "auth:api"],function(){
     Route::post('/studentadd', [PostController::class, 'addStudent']);
 
     Route::get('/getallcourses', [StudentController::class, 'getAllCourses']);
-
+    Route::get('/getenrolledcourses', [StudentController::class, 'getEnrolledCourses']);
+    Route::post('/enroll', [StudentController::class, 'enroll']);
 });
 Route::post('/register', [PostController::class, 'createAccount']);
 Route::post('/login', [AuthController::class, 'login']);
