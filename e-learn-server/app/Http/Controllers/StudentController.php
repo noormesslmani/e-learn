@@ -19,7 +19,6 @@ class StudentController extends Controller
     public function viewAllCourses(){
         return response()->json(["result" => "ok", "data"=>Course::all()], 201); 
     }
-
     public function getEnrolledCourses(){
         $student_id=Auth::user()->id;
         $enrollments=Enrollment::where('student_id',$student_id)->select('course_id')->get();
@@ -32,12 +31,7 @@ class StudentController extends Controller
         return response()->json(["result" => "ok","courses" => $courses, "details"=>$details], 201);  
     }
     public function enroll(Request $request){
-        try{
-            $course_id=Course::select('id')->where('name',$request->name)->get()[0]['_id'];
-        }
-        catch(\Exception $e){
-            return response()->json(["result" => $e->getMessage()], 404); 
-        }
+        $course_id=$request->course_id;
         Enrollment::insert([
             'student_id' =>Auth::user()->id,
             'course_id' => $course_id,
