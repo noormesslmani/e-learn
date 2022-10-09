@@ -1,21 +1,15 @@
 import React, {useState} from 'react';
 import '../App.css'
  
-export default function RegisterForm({ displayRegister, handleSwitch }) {
+export default function LoginForm({ displayLogin, handleSwitch }) {
  
 
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [phone, setPhone] = useState('');
-  const [username, setUsername] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
  
-  const handleName = (e) => {
-    setName(e.target.value);
-    setSubmitted(false);
-  };
+  
   const handleEmail = (e) => {
     setEmail(e.target.value);
     setSubmitted(false);
@@ -24,17 +18,10 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
     setPassword(e.target.value);
     setSubmitted(false);
   };
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-    setSubmitted(false);
-  };
-  const handlePhone = (e) => {
-    setPhone(e.target.value);
-    setSubmitted(false);
-  };
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name === '' || email === '' || password === '' || phone === '' || username === '') {
+    if ( email === '' || password === '' ) {
       setError(true);
     } else {
       setSubmitted(true);
@@ -56,33 +43,21 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
     );
   };
   return (
-    <div className="form" style={{display: displayRegister ? 'block' : 'none',}} >
+    <div className="form" style={{display: displayLogin ? 'block' : 'none',}} >
       <div>
-        <h2>Create an account</h2>
+        <h2>Login</h2>
       </div>
       <form>
-        <label className="label">Full Name</label>
-        <input onChange={handleName} className="input"
-          value={name} type="text" placeholder='Full Name' />
-
-         <label className="label">Phone</label>
-        <input onChange={handlePhone} className="input"
-          value={phone} type="number" placeholder='Phone' />
-
         <label className="label">Email</label>
         <input onChange={handleEmail} className="input"
           value={email} type="email" placeholder='Email' />
-
-        <label className="label">Username</label>
-        <input onChange={handleUsername} className="input"
-          value={email} type="text" placeholder='Username' />
 
         <label className="label">Password</label>
         <input onChange={handlePassword} className="input"
           value={password} type="password" placeholder='Password' />
  
         <button onClick={handleSubmit} className="btn" type="submit">Submit</button>
-        <p>Already have an account? Click <span className='switch-to-signin' onClick={handleSwitch}>here</span> to login</p>
+        <p>Don't have an account? Click <span className='switch-to-register' onClick={handleSwitch}>here</span> to create one</p>
       </form>
       <div className="messages">
         {errorMessage()}

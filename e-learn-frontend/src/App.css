@@ -59,7 +59,7 @@ h1{
 .success{
   color: green;
 }
-.switch-to-signin{
+.switch-to-signin, .switch-to-register{
   color: lightskyblue;
   font-weight: bold;
   cursor: pointer;
