@@ -29,35 +29,28 @@ class RegisterController extends Controller
                 "message" => "Validation failed"
             ]);
         }
-
-        $full_name=$request->full_name;
-        $phone=$request->phone;
-        $email=$request->email;
-        $username=$request->username;
         $type=$request->type;
-        $password= Hash::make($request->password);
         $user_type_id=Type::select('id')->where('type',$type)->get()[0]["_id"];
-       
-        if(User::where('email',$email)->exists() ){
+        if(User::where('email',$request->email)->exists() ){
             return response()->json([
                 "data" => "email already exists"
             ]);
         }
         //check if username is taken
-        if(User::where('username',$username)->exists() ){
+        if(User::where('username',$request->username)->exists() ){
             return response()->json([
                 "data" => "username is taken"
             ]);
         }
         //insert data in users
         User::insert([
-            'full_name' =>$full_name,
-            'email' => $email,
-            'password' => $password,
-            'username'=>$username,
-            'phone'=>$phone,
+            'full_name' =>$request->full_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'username'=>$request->username,
+            'phone'=>$request->phone,
             'user_type_id'=>$user_type_id,
-            'profile-picture'=>null,
+            'profile_picture'=>null,
             'created_at'=>date('d-m-y h:i:s')
         ]);  
         return response()->json(["result" => "ok"], 201);  
