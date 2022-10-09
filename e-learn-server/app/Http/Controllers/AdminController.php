@@ -18,14 +18,23 @@ class AdminController extends Controller
         $admin = Auth::user();
         $type= Auth::user()->type()->get()[0]['type'];
         if ($type=='admin'){
-            $id=User::select('id')->where('username',$request->username)->get()[0]['_id'];
-            Course::insert([
-                'name' =>$request->name,
-                'description' => $request->description,
-                'fees' => $request->fees,
-                'teacher_id'=> $id
-            ]); 
-            return response()->json(["result" => "ok"], 201); 
+            try{
+                $user_type=User::where('username',$request->username)->first()->type()->get()[0]['type'];
+            }
+            catch(\Exception $e){
+                return response()->json(["result" => $e->getMessage()], 404); 
+            }
+            if($user_type=='teacher'){
+                $id=User::where('username',$request->username)->get()[0]['_id'];
+                Course::insert([
+                    'name' =>$request->name,
+                    'description' => $request->description,
+                    'fees' => $request->fees,
+                    'teacher_id'=> $id
+                ]); 
+                return response()->json(["result" => "ok"], 201); 
+            }
+            return response()->json(["result" => "Unauthorized User"], 404);
         }
         return response()->json(["result" => "Unauthorized"], 406);
     }
