@@ -20,7 +20,7 @@ export default function LoginForm({ displayLogin, handleSwitch }) {
     e.preventDefault();
     if ( email === '' || password === '' ) {
       setError(true);
-      setInvalid(false);
+      
     } else {
       signin();
       setError(false);
@@ -33,7 +33,17 @@ export default function LoginForm({ displayLogin, handleSwitch }) {
     };
     let res = axios.post(baseURL+"login",payload)
     .then(function (response) {
-        console.log(response.data);
+        if(response.data.status=='success'){
+          localStorage.setItem('user',JSON.stringify(response.data.user));
+          localStorage.setItem('token',response.data.authorisation.token);
+          // console.log(JSON.parse(localStorage.getItem('user')))
+          // console.log(localStorage);
+          setInvalid(false);
+        }
+        else{
+          setInvalid(true);
+          console.log('dwgdb')
+        }
         return response.data;
     })
     .catch(function (error) {
@@ -50,7 +60,7 @@ export default function LoginForm({ displayLogin, handleSwitch }) {
   const invalidMessage = () => {
     return (
       <div className="invalid" style={{display: invalid ? 'block' : 'none',}}>
-        <p>Invalid credentials, please try again</p>
+        <p>Invalid email or password, please try again</p>
       </div>
     );
   };
