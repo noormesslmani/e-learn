@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../App.css'
  
-export default function Form() {
+export default function Form({ displayRegister, handleSwitch }) {
  
 
   const [name, setName] = useState('');
@@ -56,7 +56,7 @@ export default function Form() {
     );
   };
   return (
-    <div className="form">
+    <div className="form" style={{display: displayRegister ? 'block' : 'none',}} >
       <div>
         <h2>Create an account</h2>
       </div>
@@ -82,6 +82,7 @@ export default function Form() {
           value={password} type="password" placeholder='Password' />
  
         <button onClick={handleSubmit} className="btn" type="submit">Submit</button>
+        <p>Already have an account? Click <span className='switch-to-signin' onClick={handleSwitch}>here</span> to login</p>
       </form>
       <div className="messages">
         {errorMessage()}

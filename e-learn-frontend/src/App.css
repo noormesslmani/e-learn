@@ -59,3 +59,8 @@ h1{
 .success{
   color: green;
 }
+.switch-to-signin{
+  color: lightskyblue;
+  font-weight: bold;
+  cursor: pointer;
+}
