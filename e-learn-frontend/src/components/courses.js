@@ -24,13 +24,18 @@ export default function Courses() {
     }, []);
 
     function Display({id}){
-        return(
-            <div className='course-card'>
-                <img src={image} className='course-img'></img>
-            </div>
-        )
+        for(let course of JSON.parse(localStorage.courses)){
+            if(course._id==id){
+            return(
+                <div className='course-card'>
+                    <img src={image} className='course-img'></img>
+                    <div className='course-name' >{course.name}</div>
+                    <div className='description' >Description: {course.description}</div>
+                </div>
+            )}
+        }
     }
-    console.log(JSON.parse(localStorage.mycourses).courses)
+    console.log(localStorage)
     const noCoursesMessage = () => {
         return (
           <h2 className="messsage" style={{display: nocourses ? 'block' : 'none',}}>
