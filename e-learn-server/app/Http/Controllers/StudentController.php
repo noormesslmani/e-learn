@@ -59,7 +59,7 @@ class StudentController extends Controller
         $assignment_id=$request->assignment_id;
         $student_id=Auth::user()->id;
         if(Submission::where('student_id',$student_id)->where('assignment_id',$assignment_id)->exists()){
-            return response()->json(["result" => "Already Submitted"], 404);
+            return response()->json(["result" => "Already Submitted"]);
         }
         Submission::insert([
             'assignment_id' =>$assignment_id,

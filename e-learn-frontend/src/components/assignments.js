@@ -10,6 +10,9 @@ export default function AssignmentList() {
     const { state } = useLocation();
     const [assignments, setAssignments] = useState([]);
     const [submitModal, setSubmitModal] = useState(false);
+    const [solution, setSolution] = useState('');
+    const [id, setId]=useState('');
+    const [submitted, setSubmitted]=useState(false)
     useEffect(() => {
         setAssignments([]);
         let payload = {course_id: state.id};
@@ -18,6 +21,7 @@ export default function AssignmentList() {
         };
         let res = axios.post(baseURL+"getstudentassignments",payload,config)
         .then(function (response) {
+            console.log(response.data.data)
             setAssignments(response.data.data)
         })
         .catch(function (error) {
@@ -25,6 +29,27 @@ export default function AssignmentList() {
         });
     }, []);
     
+    function submitAssignment(){
+        let payload = {assignment_id: id, solution:solution};
+        let config = {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
+        };
+        let res = axios.post(baseURL+"submitassignment",payload,config)
+        .then(function (response) {
+            console.log(response.data)
+            if(response.data.result=='ok'){
+                setSubmitModal(false)
+            }
+            else{
+                setSubmitted(true)
+                console.log(submitted)
+            }
+            return response.data
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
 
     const noAssignmentsMessage = () => {
         return (
@@ -36,20 +61,32 @@ export default function AssignmentList() {
 
     const handleClick=(e)=>{
         e.preventDefault();
-        setSubmitModal(true)
+        setSubmitModal(true);
+        setSubmitted(false)
     }
-    
+    const handleCancel=(e)=>{
+        e.preventDefault();
+        setSubmitModal(false);
+    }
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        console.log(solution)
+        if(solution!==''){
+            submitAssignment();
+        }
+    }
+
     return (
         <div className='suggested-courses' >
             <h1>Assignments</h1>
             {
                 assignments.length>0? (
                 <div className='displayed-courses'>
-                {assignments.map((assignment)=><AssignmentCard assignment={assignment} handleClick={handleClick}/>)} 
+                {assignments.map((assignment)=><AssignmentCard assignment={assignment} handleClick={handleClick} setId={setId} />)} 
                 </div>): <div>{noAssignmentsMessage()}</div>
             }
             {
-                submitModal?(<SubmitModal/>):<></>
+                submitModal?(<SubmitModal handleSubmit={handleSubmit} handleCancel={handleCancel} setSolution={setSolution} submitted={submitted} />):<></>
             }
         </div>      
     );

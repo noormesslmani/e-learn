@@ -115,6 +115,7 @@ textarea{
     display: flex;
     justify-content: space-around;
 }
-{
-
+.submitted-message{
+    color: red;
+    font-size: 14px;
 }
