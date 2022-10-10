@@ -13,6 +13,7 @@ export default function Courses() {
         };
         let res = axios.get(baseURL+"getenrolledcourses",config)
         .then(function (response) {
+            console.log(response.data)
             if(response.data.courses.length==0){
                 setNocourses(true);
             }
