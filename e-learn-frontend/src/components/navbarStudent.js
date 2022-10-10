@@ -10,7 +10,7 @@ export default function Navbar() {
             <div>
                 <Link className='navlinks'>Courses</Link>
                 <Link className='navlinks'>Assignments</Link>
-                <Link className='navlinks'>logOut</Link>
+                <Link className='navlinks' to='/' >logOut</Link>
             </div>
         </nav>      
     );

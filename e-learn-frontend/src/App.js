@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/pages/Home';
-import HomeStudent from './components/pages/HomeStudent';
+import LandingStudent from './components/pages/LandingStudent';
 function App() {
   return (
     <>
       <Router>
         <Routes>
           <Route path='/' exact element={<Home/>} />
-          <Route path='/home-student' element={<HomeStudent/>} />
+          <Route path='/home-student' element={<LandingStudent/>} />
         </Routes>
       </Router>
     </>
