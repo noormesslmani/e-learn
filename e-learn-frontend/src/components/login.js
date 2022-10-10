@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import '../App.css'
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 export default function LoginForm({ displayLogin, handleSwitch }) {
-
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
@@ -38,6 +39,7 @@ export default function LoginForm({ displayLogin, handleSwitch }) {
           // console.log(JSON.parse(localStorage.getItem('user')))
           // console.log(localStorage);
           setInvalid(false);
+          navigate("/home-student");
         }
         else{
           setInvalid(true);
