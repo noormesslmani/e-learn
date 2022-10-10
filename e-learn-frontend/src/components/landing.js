@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import '../Student.css'
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import image from '../course.png';
 const baseURL='http://127.0.0.1:8000/api/v1/';
 
 export default function Landing() {
@@ -12,23 +12,19 @@ export default function Landing() {
         let res = axios.get(baseURL+"viewallcourses",config)
         .then(function (response) {
             localStorage.setItem('courses',JSON.stringify(response.data.data))
-            // Display(response.data.data)
         })
         .catch(function (error) {
             console.log(error);
         });
     }, []);
     
-    
-    for ( let i of JSON.parse(localStorage.getItem('courses'))){
-        console.log(i)
-    }
     function Display({course}){
         return(
             <div className='course-card'>
-                <div>{course.name}</div>
-                <div>{course.description}</div>
-                <div>{course.fees}</div>
+                <img src={image} className='course-img'></img>
+                <div className='course-name' >{course.name}</div>
+                <div className='description' >Description: {course.description}</div>
+                <div className='fees'>Fees: {course.fees}$</div>
             </div>
         )
     }
