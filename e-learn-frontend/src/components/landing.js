@@ -22,7 +22,7 @@ export default function Landing() {
     }, []);
     return (
         <div className='suggested-courses' >
-            <h1>Suggested Courses</h1>
+            <h1>Available Courses</h1>
             <div className='displayed-courses'>
                 {courses.map((course)=><CourseCard course={course} />)} 
             </div>
