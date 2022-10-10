@@ -1,27 +1,17 @@
 import './App.css';
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import RegisterForm from './components/form';
-import LoginForm from './components/login';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/pages/Home';
 function App() {
-  const [displayRegister, setDisplayRegister] = useState(true);
-  const [displayLogin, setDisplayLogin] = useState(false);
-  const handleSwitch = () => {
-    if(displayRegister){
-      setDisplayRegister(false);
-      setDisplayLogin(true);
-    }
-    else{
-      setDisplayRegister(true);
-      setDisplayLogin(false);
-    }
-  };
+  console.log('hi from home')
   return (
-    <div className="App">
-      <h1>Welcome to Bright E-School</h1>
-      <RegisterForm handleSwitch={handleSwitch} displayRegister={displayRegister}/>
-      <LoginForm handleSwitch={handleSwitch} displayLogin={displayLogin}/>
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path='/' exact element={<Home/>} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
