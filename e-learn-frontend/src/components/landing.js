@@ -6,6 +6,7 @@ const baseURL='http://127.0.0.1:8000/api/v1/';
 
 export default function Landing() {
     useEffect(() => {
+        localStorage.setItem('courses','')
         let config = {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
         };
@@ -28,13 +29,13 @@ export default function Landing() {
             </div>
         )
     }
-
+    console.log(localStorage)
     return (
         <div className='suggested-courses' >
             <h1>Suggested Courses</h1>
             <div className='displayed-courses'>
             {
-                JSON.parse(localStorage.getItem('courses')).map((course) => {
+                JSON.parse(localStorage.courses).map((course) => {
                     return (<Display course={course}/>)
                 })
             }
