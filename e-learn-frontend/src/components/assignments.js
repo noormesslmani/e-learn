@@ -8,11 +8,10 @@ const baseURL='http://127.0.0.1:8000/api/v1/';
 
 export default function AssignmentList() {
     const { state } = useLocation();
-    const [noassignments, setNoassignments] = useState(false);
     const [assignments, setAssignments] = useState([]);
     
     useEffect(() => {
-        setNoassignments(false);
+        setAssignments([]);
         let payload = {course_id: state.id};
         let config = {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
@@ -26,12 +25,23 @@ export default function AssignmentList() {
         });
     }, []);
     
+
+    const noAssignmentsMessage = () => {
+        return (
+          <h2 className="messsage" >
+            No assignments to display 
+          </h2>
+        );
+    };
     return (
         <div className='suggested-courses' >
             <h1>Assignments</h1>
-            <div className='displayed-courses'>
+            {
+                assignments.length>0? (
+                <div className='displayed-courses'>
                 {assignments.map((assignment)=><AssignmentCard assignment={assignment} />)} 
-            </div>
+                </div>): <div>{noAssignmentsMessage()}</div>
+            }
         </div>      
     );
 }
