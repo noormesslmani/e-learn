@@ -24,14 +24,18 @@ export default function Courses() {
         });
     }, []);
 
+    const handleClick = (e) => {
+        console.log('clicked')
+    };
     function Display({id}){
         for(let course of JSON.parse(localStorage.courses)){
             if(course._id==id){
             return(
-                <div className='course-card'>
+                <div className='course-card' >
                     <img src={image} className='course-img'></img>
                     <div className='course-name' >{course.name}</div>
                     <div className='description' >Description: {course.description}</div>
+                    <button className='view-assignment' key={id} onClick={handleClick} >View Assignments</button>
                 </div>
             )}
         }

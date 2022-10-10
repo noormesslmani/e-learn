@@ -60,3 +60,14 @@
 .messsage{
     color:white
 }
+.view-assignment{
+    background-color: rgb(195, 195, 195);
+    border-radius: 10px;
+    border:none;
+    padding:7px;
+    color: white;
+    cursor: pointer;
+}
+.view-assignment:hover{
+    background-color: lightblue;
+}
