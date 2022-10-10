@@ -35,6 +35,7 @@
     cursor: pointer;
     border-radius: 10px;
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.3));
+    overflow: hidden;
 }
 .course-card>div{
     margin-bottom: 10px;
@@ -51,7 +52,7 @@
     color: lightblue;
     font-weight: bolder;
 }
-.description, .fees{
+.description, .fees, .assignment-description{
     font-size: 14px;
 }
 .fees{
@@ -70,4 +71,7 @@
 }
 .view-assignment:hover{
     background-color: lightblue;
+}
+.requirements{
+    font-weight: bold;
 }
