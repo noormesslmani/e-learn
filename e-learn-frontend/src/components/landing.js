@@ -14,18 +14,17 @@ export default function Landing() {
         .then(function (response) {
             console.log(response.data.data)
             setCourses(response.data.data)
+            localStorage.setItem('courses',JSON.stringify(response.data.data))
         })
         .catch(function (error) {
             console.log(error);
         });
     }, []);
-    
     return (
         <div className='suggested-courses' >
             <h1>Suggested Courses</h1>
             <div className='displayed-courses'>
-                {courses.map((course)=><CourseCard course={course} />)}
-                
+                {courses.map((course)=><CourseCard course={course} />)} 
             </div>
         </div>      
     );
