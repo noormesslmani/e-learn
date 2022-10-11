@@ -10,14 +10,20 @@ export default function AddNewUser() {
     const [password,setPassword]=useState('');
     const [phone,setPhone]=useState('');
     const [type,setType]=useState('');
+    const [emailExists,setEmailExists]=useState(false);
+    const [usernameExists,setUsernameExists]=useState(false);
+    const [success,setSuccess]=useState(false);
+    const [validPassword,setValidPassword]=useState(false);
     
     const handleSubmit=(e)=>{
+        setEmailExists(false);
+        setUsernameExists(false);
+        setSuccess(false);
         e.preventDefault();
         if(name !=='' && username!=='' && email!=='' && password!=='' && phone!='' && type!==''){
             registerUser()
         }
     }
-    console.log(type)
 
     function registerUser(){
         let payload = {
@@ -31,6 +37,15 @@ export default function AddNewUser() {
         let res = axios.post(baseURL+"register",payload)
         .then(function (response) {
             console.log(response.data);
+            if(response.data.result=='email already exists'){
+                setEmailExists(true)
+            }
+            else if(response.data.result=='username is taken'){
+                setUsernameExists(true);
+            }
+            else if(response.data.result=='ok'){
+                setSuccess(true);
+            }
             return response.data;
         })
         .catch(function (error) {
@@ -41,7 +56,7 @@ export default function AddNewUser() {
         <div className='add-new-user'>
             <h1>Add a new user</h1>
             <AddUserModal handleSubmit={handleSubmit} setName={setName}
-            setUsername={setUsername} setEmail={setEmail} setPassword={setPassword} setPhone={setPhone} setType={setType} /> 
+            setUsername={setUsername} setEmail={setEmail} setPassword={setPassword} setPhone={setPhone} setType={setType} success={success} emailExists={emailExists} usernameExists={usernameExists} /> 
         </div> 
     )
 }

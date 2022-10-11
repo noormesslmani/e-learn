@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../Admin.css'
 
-export default function AddUserModal({handleSubmit,setName, setUsername, setEmail, setPassword, setPhone, setType}) {
+export default function AddUserModal({handleSubmit,setName, setUsername, setEmail, setPassword, setPhone, setType, success, emailExists, usernameExists}) {
  
     const handleName=(e)=>{
         setName(e.target.value)
@@ -47,10 +47,12 @@ export default function AddUserModal({handleSubmit,setName, setUsername, setEmai
             <div className='details'>
                 <input className="input" type="text" placeholder='Password' onChange={handlePassword}/>
             </div>
-
             <div class="btns">
                 <button className='admin-submit-btn' onClick={handleSubmit}>Confirm</button>
             </div>
+            {success? (<div className='user-add-success'>User successfully added</div>): <></>}
+            {emailExists? (<div className='user-email-exists'>Email is already registered</div>): <></>}
+            {usernameExists? (<div className='user-username-exists'>Username is already taken</div>): <></>}
         </form>
     )
 }

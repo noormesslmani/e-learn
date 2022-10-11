@@ -52,7 +52,7 @@
 .admin-submit-btn:active, .admin-cancel-btn:active{
     scale:0.9;
 }
-.message{
+.message, .user-email-exists, .user-username-exists{
     color: red;
 }
 .instructor-card{
@@ -85,4 +85,7 @@
 .instructor-name{
     color: lightblue;
     font-weight: bolder;
+}
+.user-add-success{
+    color: green;
 }
