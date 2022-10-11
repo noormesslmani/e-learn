@@ -18,6 +18,7 @@ export default function AddInstructorModal({handleSubmit,handleCancel,setName, s
     const handleUsername=(e)=>{
         setUsername(e.target.value)
     }
+    
     return(
         <div className='add-modal'>
             <form className='content'>
@@ -28,7 +29,7 @@ export default function AddInstructorModal({handleSubmit,handleCancel,setName, s
                 </div>
                 <div className='details'>
                     <label className="label">Phone Number</label>
-                    <input className="input" type="text" placeholder='Phone Number' onChange={handlePhone}/>
+                    <input className="input" type="number" placeholder='Phone Number' onChange={handlePhone}/>
                 </div>
                 <div className='details'>
                     <label className="label">Email</label>
@@ -40,7 +41,7 @@ export default function AddInstructorModal({handleSubmit,handleCancel,setName, s
                 </div>
                 <div className='details'>
                     <label className="label">Password</label>
-                    <input className="input" type="number" placeholder='Password' onChange={handlePassword}/>
+                    <input className="input" type="text" placeholder='Password' onChange={handlePassword}/>
                 </div>
     
                 <div class="btns">

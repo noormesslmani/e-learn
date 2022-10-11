@@ -16,10 +16,36 @@ export default function AddInstructor() {
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
+        if(name !=='' && username!=='' && email!=='' && password!=='' && phone!=''){
+            registerInstructor()
+        }
     }
+    console.log(name)
+    console.log(username)
+    console.log(email)
+    console.log(password)
+    console.log(phone)
     const handleCancel=(e)=>{
         e.preventDefault();
         setAddModal(false);
+    }
+    function registerInstructor(){
+        let payload = {
+          full_name: name,
+          phone: phone,
+          email: email,
+          username: username,
+          password: password,
+          type:'teacher'
+        };
+        let res = axios.post(baseURL+"register",payload)
+        .then(function (response) {
+            console.log(response.data);
+            return response.data;
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
     return( 
         <>
