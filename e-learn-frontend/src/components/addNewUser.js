@@ -14,20 +14,27 @@ export default function AddNewUser() {
     const [usernameExists,setUsernameExists]=useState(false);
     const [success,setSuccess]=useState(false);
     const [validPassword,setValidPassword]=useState(true);
-    const [validEmail,setValidEmail]=useState(false);
+    const [validEmail,setValidEmail]=useState(true);
     const [allEntered, setAllEntered]=useState(true);
     const handleSubmit=(e)=>{
         setEmailExists(false);
+        setValidEmail(true);
         setUsernameExists(false);
         setSuccess(false);
         setValidPassword(true);
         setAllEntered(true);
+        setValidEmail(true);
         e.preventDefault();
         if(name !=='' && username!=='' && email!=='' && password!=='' && phone!='' && type!==''){
-            if (passwordFormat(password)){
-                registerUser()}
+            if(emailFormat(email)){
+                if (passwordFormat(password)){
+                    registerUser()}
+                else{
+                    setValidPassword(false);
+                }
+            }
             else{
-                setValidPassword(false);
+                setValidEmail(false);
             }
         }
         else{
@@ -38,6 +45,11 @@ export default function AddNewUser() {
         const expression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
         return expression.test(password);
     }
+    function emailFormat(email) {
+        const expression =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return expression.test(email);
+    }
+
     function registerUser(){
         let payload = {
           full_name: name,
@@ -70,7 +82,7 @@ export default function AddNewUser() {
             <h1>Add a new user</h1>
             <AddUserModal handleSubmit={handleSubmit} setName={setName}
             setUsername={setUsername} setEmail={setEmail} setPassword={setPassword} setPhone={setPhone} setType={setType} success={success} emailExists={emailExists} usernameExists={usernameExists}
-            validPassword={validPassword} allEntered={allEntered} /> 
+            validPassword={validPassword} validEmail={validEmail} allEntered={allEntered} /> 
         </div> 
     )
 }
