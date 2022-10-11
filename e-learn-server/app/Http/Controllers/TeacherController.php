@@ -31,7 +31,7 @@ class TeacherController extends Controller
             return response()->json(["result" => $e->getMessage()], 404); 
         }
         Assignment::insert([
-            'desciption' =>$request->description,
+            'description' =>$request->description,
             'created_at' => date('d-m-y h:i:s'),
             'course_id'=> $course_id,
             'teacher_id'=> Auth::user()->id

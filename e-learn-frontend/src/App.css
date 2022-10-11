@@ -79,6 +79,7 @@ h1{
   font-size: 20px;
   text-decoration: none;
   margin: 10px;
+  cursor: pointer;
 }
 .course-links:hover{
   text-decoration: underline;
