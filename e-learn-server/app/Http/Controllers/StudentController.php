@@ -43,7 +43,7 @@ class StudentController extends Controller
             $data=Assignment::where('course_id',$course_id)->get();
             return response()->json(['data'=>$data ,"result" => "ok"], 201);
         } 
-        return response()->json(["result" => "Access denied"], 404);
+        return response()->json(["result" => "Access denied"]);
     }
 
     public function submitAssignment(Request $request){ 
