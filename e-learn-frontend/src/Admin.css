@@ -1,5 +1,4 @@
 .add-course{
-    text-decoration: none;
     color: gray;
     font-weight: bold;
     font-size: 20px;
@@ -22,7 +21,6 @@
 .content{
     align-self: center;
     background-color: #fefefe;
-    /* margin: 15% auto;  */
     padding: 30px;
     border: 1px solid #888;
     width: 40%; 

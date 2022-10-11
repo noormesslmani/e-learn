@@ -11,7 +11,7 @@ export default function AddCourse() {
     const [description,setDescription]=useState('');
     const [username,setUsername]=useState('');
     function submitCourse(){
-        let payload = {name: name, username: username, descrition: description, fees: fees};
+        let payload = {name: name, username: username, description: description, fees: fees};
         let config = {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
         };
