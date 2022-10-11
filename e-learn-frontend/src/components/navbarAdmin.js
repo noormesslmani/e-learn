@@ -8,6 +8,7 @@ export default function Navbar() {
             <div>
                 <Link className='navlinks' to='/instructors-admin' >Instructors</Link>
                 <Link className='navlinks' >students</Link>
+                <Link className='navlinks' to='/add-users' >Add user</Link>
                 <Link className='navlinks' to='/' >logOut</Link>
             </div>
         </nav>      
