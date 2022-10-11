@@ -6,7 +6,7 @@ export default function Navbar() {
         <nav className='navbar'>
             <Link className='navlinks' to='/home-instructor'>Home</Link>
             <div>
-                <Link className='navlinks' to='/' >Your Courses</Link>
+                <Link className='navlinks' to='/courses-instructor' >Your Courses</Link>
                 <Link className='navlinks' to='/' >logOut</Link>
             </div>
         </nav>      
