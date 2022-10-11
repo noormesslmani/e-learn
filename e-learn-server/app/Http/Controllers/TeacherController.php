@@ -76,7 +76,7 @@ class TeacherController extends Controller
         try{
             $data=Assignment::where('course_id', $request->course_id)->get();}
         catch(\Exception $e){
-            return response()->json(["result" => $e->getMessage()], 404); 
+            return response()->json(["result" => $e->getMessage()]); 
         }  
         return response()->json(["result" => "ok", "data"=>$data], 201); 
     }

@@ -13,7 +13,7 @@ function CourseDetails() {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
         };
         let payload= {course_id: state.clickedCourse._id}
-        let res = axios.get(baseURL+"getassignments",payload,config)
+        let res = axios.post(baseURL+"getassignments",payload,config)
         .then(function (response) {
             console.log(response.data);
         })
