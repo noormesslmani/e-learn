@@ -71,11 +71,15 @@ h1{
 .header{
   display: flex;
   justify-content: center;
+  background-color: gainsboro;
 }
 .course-links{
   color: white;
   font-weight: bolder;
   font-size: 20px;
   text-decoration: none;
-  margin: 5px;
+  margin: 10px;
+}
+.course-links:hover{
+  text-decoration: underline;
 }
