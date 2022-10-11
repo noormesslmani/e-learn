@@ -1,7 +1,7 @@
 import '../../Student.css';
 import React from 'react';
-import Navbar from '../navbarStudent';
-import AssignmentList from '../assignments';
+import Navbar from '../student/navbarStudent';
+import AssignmentList from '../student/assignments';
 
 function AssignmentsStudent() {
     return (

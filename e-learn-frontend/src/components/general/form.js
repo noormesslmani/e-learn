@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../App.css'
+import '../../App.css'
 import axios from 'axios';
 export default function RegisterForm({ displayRegister, handleSwitch }) {
   const [name, setName] = useState('');

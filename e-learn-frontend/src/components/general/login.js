@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../App.css'
+import '../../App.css'
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 export default function LoginForm({ displayLogin, handleSwitch }) {
@@ -70,6 +70,7 @@ export default function LoginForm({ displayLogin, handleSwitch }) {
       </div>
     );
   };
+  console.log(displayLogin)
   return (
     <div className="form" style={{display: displayLogin ? 'block' : 'none',}} >
       <div>

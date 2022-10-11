@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import '../Student.css'
+import '../../Student.css'
 import axios from 'axios';
 import InstructorCard from './instructorCard';
 const baseURL='http://127.0.0.1:8000/api/v1/';

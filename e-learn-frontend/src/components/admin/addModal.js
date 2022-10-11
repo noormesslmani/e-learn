@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Admin.css'
+import '../../Admin.css'
 
 export default function AddModal({handleSubmit,handleCancel,setName, setUsername, setFees, setDescription, invalidUser, unauthorizedUser}) {
     const handleName=(e)=>{

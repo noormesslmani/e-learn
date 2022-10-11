@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Student.css'
+import '../../Student.css'
 import { Link } from 'react-router-dom';
 export default function Navbar() {
     return (

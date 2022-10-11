@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Student.css'
+import '../../Student.css'
 
 export default function CreateAssignment({setDescription,state, handleSubmitAssignment, handleCancelAssignment}) {
     const handleChange=(e)=>{

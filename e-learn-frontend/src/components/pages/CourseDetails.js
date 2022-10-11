@@ -1,11 +1,11 @@
 import '../../Student.css';
 import React, { useState, useEffect } from 'react';
-import Navbar from '../navbarInstructor';
+import Navbar from '../instructor/navbarInstructor';
 import { useLocation} from 'react-router-dom';
-import Assignment from '../assignmentInstructor';
+import Assignment from '../instructor/assignmentInstructor';
 import axios from 'axios';
-import CreateAssignment from '../createAssignment';
-import EnrollStudent from '../enrollStudent';
+import CreateAssignment from '../instructor/createAssignment';
+import EnrollStudent from '../instructor/enrollStudent';
 const baseURL='http://127.0.0.1:8000/api/v1/';
 function CourseDetails() {
     let config = {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},};

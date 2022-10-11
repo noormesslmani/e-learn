@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Student.css'
+import '../../Student.css'
 
 export default function AssignmentCard({assignment, handleClick, setId}) {
     const passId=()=>{

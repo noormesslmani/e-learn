@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import '../Admin.css'
+import React from 'react';
+import '../../Admin.css'
 
 export default function AddUserModal({handleSubmit,setName, setUsername, setEmail, setPassword, setPhone, setType, success, emailExists, usernameExists, validPassword, validEmail, allEntered}) {
  

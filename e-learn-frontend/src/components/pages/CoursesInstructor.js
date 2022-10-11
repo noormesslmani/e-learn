@@ -1,7 +1,7 @@
 import '../../Student.css';
 import React from 'react';
-import Navbar from '../navbarInstructor';
-import InstructorCourses from '../instructorCourses';
+import Navbar from '../instructor/navbarInstructor';
+import InstructorCourses from '../instructor/instructorCourses';
 
 function CoursesInstructor() {
     return (

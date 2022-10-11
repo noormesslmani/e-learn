@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Student.css'
+import '../../Student.css'
 
 export default function SubmitModal({handleSubmit,handleCancel, setSolution, submitted}) {
     const handleChange=(e)=>{

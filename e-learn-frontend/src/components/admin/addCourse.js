@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../Admin.css'
+import '../../Admin.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import AddModal from './addModal';
