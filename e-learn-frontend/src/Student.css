@@ -119,3 +119,7 @@ textarea{
     color: red;
     font-size: 14px;
 }
+.student-username{
+    width: 30%;
+    align-self: center;
+}
