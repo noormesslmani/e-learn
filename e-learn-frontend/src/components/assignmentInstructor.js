@@ -9,6 +9,6 @@ export default function Assignment({assignment, state}) {
             <div className='course-name' >{state.clickedCourse.name}</div>
             <div className='assignment-description'><span className='requirements'>Requirements:</span> {assignment.description}</div>
           
-        </div> )
-    
-}
+        </div> 
+        )
+    }

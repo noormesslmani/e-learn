@@ -5,11 +5,9 @@ import InstructorCard from './instructorCard';
 const baseURL='http://127.0.0.1:8000/api/v1/';
 
 export default function Instructors() {
+    let config = {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},};
     const [instructors, setInstructors] = useState([]);
     useEffect(() => {
-        let config = {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
-        };
         axios.get(baseURL+"users",config)
         .then(function (response) {
             setInstructors(response.data.teachers);

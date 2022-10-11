@@ -6,7 +6,6 @@ import React, { useState } from 'react';
 function Home() {
   const [displayRegister, setDisplayRegister] = useState(true);
   const [displayLogin, setDisplayLogin] = useState(false);
-  // console.log('hi from home')
   const handleSwitch = () => {
     if(displayRegister){
       setDisplayRegister(false);

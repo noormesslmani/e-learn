@@ -8,6 +8,7 @@ import CreateAssignment from '../createAssignment';
 import EnrollStudent from '../enrollStudent';
 const baseURL='http://127.0.0.1:8000/api/v1/';
 function CourseDetails() {
+    let config = {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},};
     const [assignments, setAssignments] = useState([]);
     const [assignmentModal, setAssignmentModal] = useState(false);
     const [enrollModal, setEnrollModal] = useState(false);
@@ -18,9 +19,6 @@ function CourseDetails() {
     const [invalidType, setInvalidType]= useState(false);
     const { state } = useLocation();
     useEffect(() => {
-        let config = {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
-        };
         let payload= {course_id: state.clickedCourse._id}
         let res = axios.post(baseURL+"getassignments",payload,config)
         .then(function (response) {
@@ -63,9 +61,6 @@ function CourseDetails() {
         }
     }
     function createNewAssignment(){
-        let config = {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
-        };
         let payload= {course_id: state.clickedCourse._id, description: description}
         let res = axios.post(baseURL+"assignment",payload,config)
         .then(function (response) {
@@ -79,9 +74,6 @@ function CourseDetails() {
         });
     }
     function enrollStudent(){
-        let config = {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
-        };
         let payload= {course_id: state.clickedCourse._id, username: username}
         let res = axios.post(baseURL+"enrollstudent",payload,config)
         .then(function (response) {

@@ -7,6 +7,7 @@ import SubmitModal from './submitModal';
 const baseURL='http://127.0.0.1:8000/api/v1/';
 
 export default function AssignmentList() {
+    let config = {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},};
     const { state } = useLocation();
     const [assignments, setAssignments] = useState([]);
     const [submitModal, setSubmitModal] = useState(false);
@@ -16,9 +17,6 @@ export default function AssignmentList() {
     useEffect(() => {
         setAssignments([]);
         let payload = {course_id: state.id};
-        let config = {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
-        };
         let res = axios.post(baseURL+"getstudentassignments",payload,config)
         .then(function (response) {
             console.log(response.data.data)
@@ -31,9 +29,6 @@ export default function AssignmentList() {
     
     function submitAssignment(){
         let payload = {assignment_id: id, solution:solution};
-        let config = {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
-        };
         let res = axios.post(baseURL+"submitassignment",payload,config)
         .then(function (response) {
             console.log(response.data)

@@ -35,10 +35,7 @@ export default function LoginForm({ displayLogin, handleSwitch }) {
     .then(function (response) {
         if(response.data.status=='success'){
           localStorage.setItem('user',JSON.stringify(response.data.user));
-          // localStorage.setItem('type',JSON.stringify(response.data.type));
           localStorage.setItem('token',response.data.authorisation.token);
-          // console.log(JSON.parse(localStorage.getItem('user')))
-          // console.log(localStorage);
           setInvalid(false);
           if(response.data.type==='student'){
             navigate("/home-student");

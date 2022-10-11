@@ -6,14 +6,12 @@ import { useNavigate } from "react-router-dom";
 const baseURL='http://127.0.0.1:8000/api/v1/';
 
 export default function InstructorCourses() {
+    let config = {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},};
     const navigate = useNavigate();
     const [courses, setCourses] = useState([]);
     const [clickedCourse, setclickedCourse] = useState('');
     useEffect(() => {
         setclickedCourse('');
-        let config = {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
-        };
         let res = axios.get(baseURL+"getcourses",config)
         .then(function (response) {
             setCourses(response.data.data);

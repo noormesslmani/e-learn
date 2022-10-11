@@ -5,11 +5,9 @@ import EnrolledCourseCard from './enrolledCourseCard';
 const baseURL='http://127.0.0.1:8000/api/v1/';
 
 export default function Courses() {
+    let config = {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},};
     const [courses, setCourses] = useState([]);
     useEffect(() => {
-        let config = {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
-        };
         let res = axios.get(baseURL+"getenrolledcourses",config)
         .then(function (response) {
             setCourses(response.data.courses)
