@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../Admin.css'
 
-export default function AddModal({handleSubmit,handleCancel,setName, setUsername, setFees, setDescription}) {
+export default function AddModal({handleSubmit,handleCancel,setName, setUsername, setFees, setDescription, invalidUser, unauthorizedUser}) {
     // const handleChange=(e)=>{
     //     setSolution(e.target.value)
     // }
@@ -41,6 +41,8 @@ export default function AddModal({handleSubmit,handleCancel,setName, setUsername
                     <button className='submit-btn' onClick={handleSubmit}>Submit</button>
                     <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
                 </div>
+                {invalidUser? <div className='message'>Username does not exist</div>:<></> }
+                {unauthorizedUser? <div className='message'>This user is not an instructor</div>:<></> }
             </form>
         </div> 
     )

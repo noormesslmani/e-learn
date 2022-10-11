@@ -29,11 +29,11 @@ class AdminController extends Controller
             ]);
         }
         if ($type=='admin'){
-            try{
-                $user_type=User::where('username',$request->username)->first()->type()->get()[0]['type'];
-            }
-            catch(\Exception $e){
-                return response()->json(["result" => $e->getMessage()], 404); 
+            if(User::where('username',$request->username)->exists()){
+                $user_type=User::where('username',$request->username)->first()->type()->get()[0]['type'];}
+            
+            else{
+                return response()->json(["result" => 'Invalid User']); 
             }
             if($user_type=='teacher'){
                 $id=User::where('username',$request->username)->get()[0]['_id'];
@@ -45,7 +45,7 @@ class AdminController extends Controller
                 ]); 
                 return response()->json(["result" => "ok"], 201); 
             }
-            return response()->json(["result" => "Invalid User"]);
+            return response()->json(["result" => "Unauthorized User"]);
         }
         return response()->json(["result" => "Unauthorized"]);
     }

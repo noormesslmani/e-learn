@@ -44,3 +44,6 @@
     display: flex;
     justify-content: space-around;
 }
+.message{
+    color: red;
+}

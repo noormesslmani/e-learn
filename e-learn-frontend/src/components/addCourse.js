@@ -10,6 +10,8 @@ export default function AddCourse() {
     const [fees,setFees]=useState('');
     const [description,setDescription]=useState('');
     const [username,setUsername]=useState('');
+    const [invalidUser,setInvalidUser]=useState(false);
+    const [unauthorizedUser,setUnauthorizedUser]=useState(false);
     function submitCourse(){
         let payload = {name: name, username: username, description: description, fees: fees};
         let config = {
@@ -18,7 +20,14 @@ export default function AddCourse() {
         let res = axios.post(baseURL+"course",payload,config)
         .then(function (response) {
             console.log(response.data)
-            setAddModal(false)
+            if(response.data.result=='ok'){
+                setAddModal(false)}
+            else if(response.data.result=='Invalid User'){
+                setInvalidUser(true)
+            }
+            else {
+                setUnauthorizedUser(true)
+            }
             return response.data
         })
         .catch(function (error) {
@@ -26,6 +35,8 @@ export default function AddCourse() {
         });
     }
     const handleClick=()=>{
+        setInvalidUser(false)
+        setUnauthorizedUser(false)
         setAddModal(true);
     }
     const handleSubmit=(e)=>{
@@ -40,7 +51,7 @@ export default function AddCourse() {
         <>
             <Link className='add-course' onClick={handleClick}>Add a new course</Link>
             {addModal?(<AddModal handleSubmit={handleSubmit} handleCancel={handleCancel} setName={setName}
-            setUsername={setUsername} setDescription={setDescription} setFees={setFees} />):<></> } 
+            setUsername={setUsername} setDescription={setDescription} setFees={setFees} invalidUser={invalidUser} unauthorizedUser={unauthorizedUser} />):<></> } 
         </> 
     )
 }
