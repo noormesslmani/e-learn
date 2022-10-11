@@ -46,7 +46,7 @@ class TeacherController extends Controller
             $course_id=Course::select('id')->where('name',$request->name)->get()[0]['_id'];
         }
         catch(\Exception $e){
-            return response()->json(["result" => $e->getMessage()]); 
+            return response()->json(["result" => "Invalid course id"]); 
         }
         Announcement::insert([
             'teacher_id' => Auth::user()->id,
@@ -60,7 +60,7 @@ class TeacherController extends Controller
         try{
             $data=Course::where('teacher_id', Auth::user()->id)->get();}
         catch(\Exception $e){
-            return response()->json(["result" => $e->getMessage()]); 
+            return response()->json(["result" => "no courses"]); 
         }    
         return response()->json(["result" => "ok", "data"=>$data], 201); 
     }
