@@ -1,4 +1,4 @@
-import '../../Student.css';
+import '../../App.css';
 import React, { useState, useEffect } from 'react';
 import Navbar from '../instructor/navbarInstructor';
 import { useLocation} from 'react-router-dom';

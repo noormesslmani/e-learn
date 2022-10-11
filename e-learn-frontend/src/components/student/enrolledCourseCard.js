@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Student.css'
+import '../../App.css';
 import image from '../../course.png';
 import { useNavigate } from "react-router-dom";
 export default function EnrolledCourseCard({id}) {

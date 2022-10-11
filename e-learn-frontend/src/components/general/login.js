@@ -58,14 +58,14 @@ export default function LoginForm({ displayLogin, handleSwitch }) {
   }
   const errorMessage = () => {
     return (
-      <div className="error" style={{display: error ? 'block' : 'none',}}>
+      <div className="error-msg" style={{display: error ? 'block' : 'none',}}>
         <p>Please enter all the fields</p>
       </div>
     );
   };
   const invalidMessage = () => {
     return (
-      <div className="invalid" style={{display: invalid ? 'block' : 'none',}}>
+      <div className="error-msg" style={{display: invalid ? 'block' : 'none',}}>
         <p>Invalid email or password, please try again</p>
       </div>
     );

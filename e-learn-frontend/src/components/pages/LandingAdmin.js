@@ -1,4 +1,4 @@
-import '../../Admin.css';
+import '../../App.css';
 import React from 'react';
 import Navbar from '../admin/navbarAdmin';
 import Landing from '../general/landing';

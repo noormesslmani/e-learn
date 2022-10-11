@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import '../../Student.css'
+import '../../App.css'
 import axios from 'axios';
 import CourseCard from '../general/courseCard';
 import { useNavigate } from "react-router-dom";

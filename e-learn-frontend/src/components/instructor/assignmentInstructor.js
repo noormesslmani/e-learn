@@ -1,6 +1,5 @@
+import '../../App.css'
 import React from 'react';
-import '../../Student.css'
-
 export default function Assignment({assignment, state}) {
     console.log(assignment);
     console.log(state.clickedCourse);

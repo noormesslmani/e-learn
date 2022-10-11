@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Student.css'
+import '../../App.css'
 
 export default function EnrollStudent({handleCancelEnroll,handleSubmitEnroll,state, setUsername, nonexistant, invalidType}) {
     const handleChange=(e)=>{
@@ -16,8 +16,8 @@ export default function EnrollStudent({handleCancelEnroll,handleSubmitEnroll,sta
                     <button className='submit-btn' onClick={handleSubmitEnroll}>Submit</button>
                     <button className="cancel-btn" onClick={handleCancelEnroll}>Cancel</button>
                 </div>
-                {nonexistant? (<div className='message'>User does not exist</div>):<></> }
-                {invalidType? (<div className='message'>Invalid user type</div>):<></> }
+                {nonexistant? (<div className="error-msg">User does not exist</div>):<></> }
+                {invalidType? (<div className="error-msg">Invalid user type</div>):<></> }
             </div>
         </div> 
     )

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import '../../Student.css'
+import '../../App.css';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import AssignmentCard from './assignmentCard';

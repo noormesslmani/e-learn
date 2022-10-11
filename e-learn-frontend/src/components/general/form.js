@@ -84,14 +84,14 @@ export default function RegisterForm({ displayRegister, handleSwitch }) {
   };
   const errorMessage = () => {
     return (
-      <div className="error" style={{display: error ? 'block' : 'none',}}>
+      <div className="error-msg" style={{display: error ? 'block' : 'none',}}>
         <p>Please enter all the fields</p>
       </div>
     );
   };
   const alreadyexistMessage = () => {
     return (
-      <div className="exist" style={{display: exist ? 'block' : 'none',}}>
+      <div className="error-msg" style={{display: exist ? 'block' : 'none',}}>
         <p>Email or username is taken </p>
       </div>
     );

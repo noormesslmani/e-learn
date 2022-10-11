@@ -1,4 +1,4 @@
-import '../../Student.css';
+import '../../App.css';
 import React from 'react';
 import Navbar from '../student/navbarStudent';
 import Courses from '../student/courses';
