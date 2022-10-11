@@ -7,11 +7,16 @@ export default function EnrollStudent({handleCancelEnroll,handleSubmitEnroll,sta
     }
     return(
         <div className='submit-modal'>
-            <div className='content'>
+            <div className='enroll-course-content'>
                 <h2>Enroll Student in the course</h2>
-                <h4>Course Name: {state.clickedCourse.name}</h4>
-                <label for="username" >Username</label>
-                <input placeholder='Student Username' onChange={handleChange} type="text" className="student-username" name="username" />
+                <div className='enroll-student-course'>
+                    <h3>Course Name:</h3>
+                    <h3 className='enroll-course-name' >{state.clickedCourse.name}</h3>
+                </div>
+                <div className='enroll-student-username'>
+                    <label>Username:</label>
+                    <input placeholder='Student Username' onChange={handleChange} type="text" name="username" />
+                </div>
                 <div className="assignment-btns">
                     <button className='submit-btn' onClick={handleSubmitEnroll}>Submit</button>
                     <button className="cancel-btn" onClick={handleCancelEnroll}>Cancel</button>
