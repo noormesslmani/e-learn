@@ -16,7 +16,7 @@ export default function AddCourse() {
     const [success,setSuccess]=useState(false);
     function submitCourse(){
         let payload = {name: name, username: username, description: description, fees: fees};
-        axios.post(`${baseURL}course`,payload,config)
+        axios.post(`${baseURL}add-course`,payload,config)
         .then(function (response) {
             if(response.data.result=='ok'){
                 setSuccess(true);

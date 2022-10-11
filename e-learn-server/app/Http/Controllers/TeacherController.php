@@ -23,7 +23,7 @@ class TeacherController extends Controller
                 "message" => "Validation failed"
             ]);
         }
-        Assignment::insert([
+        Assignment::create([
             'description' =>$request->description,
             'created_at' => date('d-m-y h:i:s'),
             'course_id'=> $request->course_id,
@@ -34,28 +34,21 @@ class TeacherController extends Controller
 
     public function createAnnouncement(Request $request){
         $validator = Validator::make($request->all(), [
-            "name"=>"required",
+            "course_id"=>"required",
             "details"=>"required",
         ]);
         if ($validator->fails()) {
-            return response()->json([
-                "message" => "Validation failed"
-            ]);
+            return response()->json(["message" => "Validation failed"]);
         }
-        try{
-            $course_id=Course::select('id')->where('name',$request->name)->get()[0]['_id'];
-        }
-        catch(\Exception $e){
-            return response()->json(["result" => "Invalid course id"]); 
-        }
-        Announcement::insert([
+        Announcement::create([
             'teacher_id' => Auth::user()->id,
-            'course_id' => $course_id,
+            'course_id' => $request->course_id,
             'details' => $request->details,
             'created_at'=> date('d-m-y h:i:s')
         ]);
         return response()->json(["result" => "ok"], 201); 
     }
+
     public function getCourses(){
         try{
             $data=Course::where('teacher_id', Auth::user()->id)->get();}
@@ -91,7 +84,7 @@ class TeacherController extends Controller
             return response()->json(["result" => "user does not exist"]); 
         } 
         if($user->type()->get()[0]['type']=='student'){
-            Enrollment::insert([
+            Enrollment::create([
                 'student_id' =>$user['_id'],
                 'course_id' => $request->course_id,
                 'created_at' => date('d-m-y h:i:s'),

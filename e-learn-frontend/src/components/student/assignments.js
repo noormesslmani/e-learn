@@ -17,7 +17,7 @@ export default function AssignmentList() {
     useEffect(() => {
         setAssignments([]);
         let payload = {course_id: state.id};
-        let res = axios.post(baseURL+"getstudentassignments",payload,config)
+        let res = axios.post(`${baseURL}get-student-assignments`,payload,config)
         .then(function (response) {
             console.log(response.data.data)
             setAssignments(response.data.data)
@@ -29,7 +29,7 @@ export default function AssignmentList() {
     
     function submitAssignment(){
         let payload = {assignment_id: id, solution:solution};
-        axios.post(`${baseURL}submitassignment`,payload,config)
+        axios.post(`${baseURL}submit-assignment`,payload,config)
         .then(function (response) {
             console.log(response.data)
             if(response.data.result=='ok'){

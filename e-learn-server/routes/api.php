@@ -9,24 +9,20 @@ use App\Http\Controllers\StudentController;
 
 Route::group(['prefix' => 'v1'], function () {
     Route::group(["middleware"=> "auth:api"],function(){
-        Route::post('/assignment', [TeacherController::class, 'createAssignment']);
+        Route::post('/create-assignment', [TeacherController::class, 'createAssignment']);
         Route::post('/announcement', [TeacherController::class, 'createAnnouncement']);
-        Route::get('/getcourses', [TeacherController::class, 'getCourses']);
-        Route::post('/getassignments', [TeacherController::class, 'getAssignments']);
+        Route::get('/get-courses', [TeacherController::class, 'getCourses']);
+        Route::post('/get-assignments', [TeacherController::class, 'getAssignments']);
         Route::post('/getannouncements', [TeacherController::class, 'getAnnouncements']);
-        Route::post('/enrollstudent', [TeacherController::class, 'enrollStudent']);
+        Route::post('/enroll-student', [TeacherController::class, 'enrollStudent']);
 
-        Route::post('/course', [AdminController::class, 'addCourse']);
+        Route::post('/add-course', [AdminController::class, 'addCourse']);
         
-
-        Route::post('/instructoradd', [RegisterController::class, 'addInstructor']);
-        Route::post('/studentadd', [RegisterController::class, 'addStudent']);
-
-        Route::get('/viewallcourses', [StudentController::class, 'viewAllCourses']);
-        Route::get('/getenrolledcourses', [StudentController::class, 'getEnrolledCourses']);
+        Route::get('/get-all-courses', [StudentController::class, 'viewAllCourses']);
+        Route::get('/get-enrolled-courses', [StudentController::class, 'getEnrolledCourses']);
         Route::post('/enroll', [StudentController::class, 'enroll']);
-        Route::post('/getstudentassignments', [StudentController::class, 'getStudentAssignments']);
-        Route::post('/submitassignment', [StudentController::class, 'submitAssignment']);
+        Route::post('/get-student-assignments', [StudentController::class, 'getStudentAssignments']);
+        Route::post('/submit-assignment', [StudentController::class, 'submitAssignment']);
     });
     Route::get('/users', [AdminController::class, 'getUsers']);
     Route::post('/register', [RegisterController::class, 'createAccount']);
