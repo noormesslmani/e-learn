@@ -9,8 +9,8 @@ import InstructorsAdmin from './components/pages/InstructorsAdmin';
 import AddUser from './components/pages/addUser';
 import LandingInstructor from './components/pages/LandingInstructor';
 import CoursesInstructor from './components/pages/CoursesInstructor';
+import CourseDetails from './components/pages/CourseDetails';
 function App() {
-
   return (
     <>
       <Router>
@@ -24,6 +24,7 @@ function App() {
           <Route path='/add-users' element={<AddUser/>} />
           <Route path='/home-instructor' element={<LandingInstructor/>} />
           <Route path='/courses-instructor' element={<CoursesInstructor/>} />
+          <Route path='/course-details' element={<CourseDetails/>} />
         </Routes>
       </Router>
     </>
