@@ -82,14 +82,5 @@ class TeacherController extends Controller
         }  
         return response()->json(["result" => "ok", "data"=>$data], 201); 
     }
-
-    public function countStudents(Request $request){
-        try{
-            $count = Enrollment::where('course_id',$request->course_id)->count();}
-        catch(\Exception $e){
-            return response()->json(["result" => $e->getMessage()], 404); 
-        }    
-        return response()->json(["result" => "ok", "data"=>$count], 201); 
-    }
     
 }

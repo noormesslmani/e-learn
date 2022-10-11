@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../Student.css'
 
-export default function CreateAssignment({setDescription,setAssignmentModal,state, handleSubmit, handleCancel}) {
+export default function CreateAssignment({setDescription,state, handleSubmitAssignment, handleCancelAssignment}) {
     const handleChange=(e)=>{
         setDescription(e.target.value)
     }
@@ -12,8 +12,8 @@ export default function CreateAssignment({setDescription,setAssignmentModal,stat
                 <h4>Course Name: {state.clickedCourse.name}</h4>
                 <textarea placeholder='Description' onChange={handleChange}></textarea>
                 <div className="assignment-btns">
-                    <button className='submit-btn' onClick={handleSubmit}>Submit</button>
-                    <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
+                    <button className='submit-btn' onClick={handleSubmitAssignment}>Submit</button>
+                    <button className="cancel-btn" onClick={handleCancelAssignment}>Cancel</button>
                 </div>
             </div>
         </div> 

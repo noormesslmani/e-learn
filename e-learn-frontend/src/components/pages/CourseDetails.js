@@ -32,11 +32,11 @@ function CourseDetails() {
     const handleClickEnroll=(e)=>{
         console.log(e.target);
     }
-    const handleCancel=(e)=>{
+    const handleCancelAssignment=(e)=>{
         e.preventDefault()
         setAssignmentModal(false)
     }
-    const handleSubmit=(e)=>{
+    const handleSubmitAssignment=(e)=>{
         setAssignmentCreation(false);
         e.preventDefault()
         if(description!=''){
@@ -73,8 +73,8 @@ function CourseDetails() {
                 {assignments.map((assignment)=><Assignment assignment={assignment} state={state} />)} 
                 </div>): <h4>No assignments available for this course</h4>
             }
-            {assignmentModal? (<CreateAssignment setDescription={setDescription} state={state} handleCancel={handleCancel}
-            handleSubmit={handleSubmit} />):<></>}
+            {assignmentModal? (<CreateAssignment setDescription={setDescription} state={state} handleCancelAssignment={handleCancelAssignment}
+            handleSubmitAssignment={handleSubmitAssignment} />):<></>}
         </>
     );
 }
