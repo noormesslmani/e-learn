@@ -49,7 +49,6 @@ export default function LoginForm({ displayLogin, handleSwitch }) {
         }
         else{
           setInvalid(true);
-          console.log('dwgdb')
         }
         return response.data;
     })

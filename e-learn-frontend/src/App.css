@@ -2,17 +2,15 @@ body{
   background-image: url("background.png");
   background-repeat: no-repeat;
   background-size:cover;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 h1{
   color: white;
   font-size: 40px;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 30px 50px;
-}
+
  .form{
   margin-top: 10px;
   align-self: flex-start;

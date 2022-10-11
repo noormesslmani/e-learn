@@ -1,0 +1,9 @@
+.add-course{
+    text-decoration: none;
+    color: gray;
+    font-weight: bold;
+    font-size: 20px;
+}
+.add-course:hover{
+    text-decoration: underline;
+}
