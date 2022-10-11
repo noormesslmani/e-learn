@@ -45,8 +45,8 @@ class AdminController extends Controller
                 ]); 
                 return response()->json(["result" => "ok"], 201); 
             }
-            return response()->json(["result" => "Unauthorized User"], 404);
+            return response()->json(["result" => "Unauthorized User"]);
         }
-        return response()->json(["result" => "Unauthorized"], 406);
+        return response()->json(["result" => "Unauthorized"]);
     }
 }

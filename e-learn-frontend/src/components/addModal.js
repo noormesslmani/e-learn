@@ -27,11 +27,11 @@ export default function AddModal({handleSubmit,handleCancel,setName, setUsername
                 </div>
                 <div className='details'>
                     <label className="label">Course Description</label>
-                    <input className="input" type="text" placeholder='Course Description' onChange={handleDescription} />
+                    <textarea className="input" type="text" placeholder='Course Description' onChange={handleDescription}></textarea>
                 </div>
                 <div className='details'>
                     <label className="label">Course Fees in USD</label>
-                    <textarea className="input" type="text" placeholder='Course Fees' onChange={handleFees}></textarea>
+                    <input className="input" type="number" placeholder='Course Fees' onChange={handleFees}/>
                 </div>
                 <div className='details'>
                     <label className="label">Instructor Username</label>
