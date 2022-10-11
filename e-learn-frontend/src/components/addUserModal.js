@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../Admin.css'
 
-export default function AddInstructorModal({handleSubmit,handleCancel,setName, setUsername, setEmail, setPassword, setPhone}) {
+export default function AddUserModal({handleSubmit,handleCancel,setName, setUsername, setEmail, setPassword, setPhone, setType}) {
  
     const handleName=(e)=>{
         setName(e.target.value)
@@ -18,29 +18,33 @@ export default function AddInstructorModal({handleSubmit,handleCancel,setName, s
     const handleUsername=(e)=>{
         setUsername(e.target.value)
     }
-    
+    const handleType=(e)=>{
+        setType(e.target.value)
+    }
     return(
         <div className='add-modal'>
             <form className='content'>
                 <h2 className='submit-text'>Please enter the following information</h2>
                 <div className='details'>
-                    <label className="label">Full Name</label>
                     <input className="input" type="text" placeholder='Full Name' onChange={handleName} />
                 </div>
                 <div className='details'>
-                    <label className="label">Phone Number</label>
                     <input className="input" type="number" placeholder='Phone Number' onChange={handlePhone}/>
                 </div>
                 <div className='details'>
-                    <label className="label">Email</label>
                     <input className="input" type="text" placeholder='Email' onChange={handleEmail} />
                 </div>
                 <div className='details'>
-                    <label className="label">Username</label>
                     <input className="input" type="text" placeholder='Username' onChange={handleUsername} />
                 </div>
                 <div className='details'>
-                    <label className="label">Password</label>
+                    <select className="input" onChange={handleType} >
+                        <option value="">Select type</option>
+                        <option value="instructor">Instructor</option>
+                        <option value="student">Student</option>
+                    </select>
+                </div>
+                <div className='details'>
                     <input className="input" type="text" placeholder='Password' onChange={handlePassword}/>
                 </div>
     

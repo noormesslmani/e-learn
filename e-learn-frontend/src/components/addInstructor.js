@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../Admin.css'
 import axios from 'axios';
-import AddInstructorModal from './addInstructorModal';
+import AddUserModal from './addUserModal';
 import { Link } from 'react-router-dom';
 const baseURL='http://127.0.0.1:8000/api/v1/';
 export default function AddInstructor() {  
@@ -11,6 +11,7 @@ export default function AddInstructor() {
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
     const [phone,setPhone]=useState('');
+    const [type,setType]=useState('');
     const handleClick=()=>{
         setAddModal(true);
     }
@@ -20,11 +21,8 @@ export default function AddInstructor() {
             registerInstructor()
         }
     }
-    console.log(name)
-    console.log(username)
-    console.log(email)
-    console.log(password)
-    console.log(phone)
+    console.log(type)
+    
     const handleCancel=(e)=>{
         e.preventDefault();
         setAddModal(false);
@@ -50,8 +48,8 @@ export default function AddInstructor() {
     return( 
         <>
             <Link className='add-course' onClick={handleClick}>Add an instructor</Link>
-            {addModal?(<AddInstructorModal handleSubmit={handleSubmit} handleCancel={handleCancel} setName={setName}
-            setUsername={setUsername} setEmail={setEmail} setPassword={setPassword} setPhone={setPhone} />):<></> } 
+            {addModal?(<AddUserModal handleSubmit={handleSubmit} handleCancel={handleCancel} setName={setName}
+            setUsername={setUsername} setEmail={setEmail} setPassword={setPassword} setPhone={setPhone} setType={setType} />):<></> } 
         </> 
     )
 }
