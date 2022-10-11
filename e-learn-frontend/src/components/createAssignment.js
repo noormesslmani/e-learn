@@ -5,7 +5,6 @@ export default function CreateAssignment({setDescription,setAssignmentModal,stat
     const handleChange=(e)=>{
         setDescription(e.target.value)
     }
-    console.log(state);
     return(
         <div className='submit-modal'>
             <div className='content'>

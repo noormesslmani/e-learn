@@ -11,8 +11,8 @@ function CourseDetails() {
     const [assignmentModal, setAssignmentModal] = useState(false);
     const [enrollModal, setEnrollModal] = useState(false);
     const [description, setDescription] = useState('');
+    const [assignmentCreated, setAssignmentCreation] = useState(false);
     const { state } = useLocation();
-    console.log(state.clickedCourse._id)
     useEffect(() => {
         let config = {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
@@ -20,13 +20,12 @@ function CourseDetails() {
         let payload= {course_id: state.clickedCourse._id}
         let res = axios.post(baseURL+"getassignments",payload,config)
         .then(function (response) {
-            console.log(response.data.data);
             setAssignments(response.data.data);
         })
         .catch(function (error) {
             console.log(error);
         });
-    }, []); 
+    }, [assignmentCreated]); 
     const handleClickAssignment=(e)=>{
         setAssignmentModal(true);
     }
@@ -38,6 +37,7 @@ function CourseDetails() {
         setAssignmentModal(false)
     }
     const handleSubmit=(e)=>{
+        setAssignmentCreation(false);
         e.preventDefault()
         if(description!=''){
             createNewAssignment();
@@ -50,7 +50,10 @@ function CourseDetails() {
         let payload= {course_id: state.clickedCourse._id, description: description}
         let res = axios.post(baseURL+"assignment",payload,config)
         .then(function (response) {
-            console.log(response.data);
+            if(response.data.result=='ok'){
+                setAssignmentModal(false);
+                setAssignmentCreation(true);
+            }
         })
         .catch(function (error) {
             console.log(error);
