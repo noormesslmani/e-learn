@@ -48,12 +48,14 @@
 }
 .admin-submit-btn{
     background-color: lightblue;
+    margin: 10px;
 }
 .admin-submit-btn:active, .admin-cancel-btn:active{
     scale:0.9;
 }
 .message, .user-email-exists, .user-username-exists{
     color: red;
+    font-size: 12px;
 }
 .instructor-card{
     background-color: white;

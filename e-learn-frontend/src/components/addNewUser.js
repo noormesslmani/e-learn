@@ -13,18 +13,31 @@ export default function AddNewUser() {
     const [emailExists,setEmailExists]=useState(false);
     const [usernameExists,setUsernameExists]=useState(false);
     const [success,setSuccess]=useState(false);
-    const [validPassword,setValidPassword]=useState(false);
-    
+    const [validPassword,setValidPassword]=useState(true);
+    const [validEmail,setValidEmail]=useState(false);
+    const [allEntered, setAllEntered]=useState(true);
     const handleSubmit=(e)=>{
         setEmailExists(false);
         setUsernameExists(false);
         setSuccess(false);
+        setValidPassword(true);
+        setAllEntered(true);
         e.preventDefault();
         if(name !=='' && username!=='' && email!=='' && password!=='' && phone!='' && type!==''){
-            registerUser()
+            if (passwordFormat(password)){
+                registerUser()}
+            else{
+                setValidPassword(false);
+            }
+        }
+        else{
+            setAllEntered(false);
         }
     }
-
+    function passwordFormat(password) {
+        const expression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        return expression.test(password);
+    }
     function registerUser(){
         let payload = {
           full_name: name,
@@ -56,7 +69,8 @@ export default function AddNewUser() {
         <div className='add-new-user'>
             <h1>Add a new user</h1>
             <AddUserModal handleSubmit={handleSubmit} setName={setName}
-            setUsername={setUsername} setEmail={setEmail} setPassword={setPassword} setPhone={setPhone} setType={setType} success={success} emailExists={emailExists} usernameExists={usernameExists} /> 
+            setUsername={setUsername} setEmail={setEmail} setPassword={setPassword} setPhone={setPhone} setType={setType} success={success} emailExists={emailExists} usernameExists={usernameExists}
+            validPassword={validPassword} allEntered={allEntered} /> 
         </div> 
     )
 }

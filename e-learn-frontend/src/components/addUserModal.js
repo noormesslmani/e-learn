@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../Admin.css'
 
-export default function AddUserModal({handleSubmit,setName, setUsername, setEmail, setPassword, setPhone, setType, success, emailExists, usernameExists}) {
+export default function AddUserModal({handleSubmit,setName, setUsername, setEmail, setPassword, setPhone, setType, success, emailExists, usernameExists, validPassword, allEntered}) {
  
     const handleName=(e)=>{
         setName(e.target.value)
@@ -21,8 +21,8 @@ export default function AddUserModal({handleSubmit,setName, setUsername, setEmai
     const handleType=(e)=>{
         setType(e.target.value)
     }
+    
     return(
-
         <form className='adduser-content'>
             <h2 className='submit-text'>Please enter the following information</h2>
             <div className='details'>
@@ -53,6 +53,9 @@ export default function AddUserModal({handleSubmit,setName, setUsername, setEmai
             {success? (<div className='user-add-success'>User successfully added</div>): <></>}
             {emailExists? (<div className='user-email-exists'>Email is already registered</div>): <></>}
             {usernameExists? (<div className='user-username-exists'>Username is already taken</div>): <></>}
+            {!(allEntered)? (<div className='user-username-exists'>Please enter all fields</div>): <></>}
+            {!(validPassword)? (<div className='user-username-exists'><p>The password must at least 8 characters long. <br/>
+            It must contain at least one uppercase letter, <br/>one lower case letter,<br/>and one digit number</p></div>): <></>}
         </form>
     )
 }
