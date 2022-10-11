@@ -68,3 +68,14 @@ h1{
   font-weight: bold;
   cursor: pointer;
 }
+.header{
+  display: flex;
+  justify-content: center;
+}
+.course-links{
+  color: white;
+  font-weight: bolder;
+  font-size: 20px;
+  text-decoration: none;
+  margin: 5px;
+}
