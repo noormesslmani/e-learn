@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../Admin.css'
 
-export default function AddUserModal({handleSubmit,handleCancel,setName, setUsername, setEmail, setPassword, setPhone, setType}) {
+export default function AddUserModal({handleSubmit,setName, setUsername, setEmail, setPassword, setPhone, setType}) {
  
     const handleName=(e)=>{
         setName(e.target.value)
@@ -23,7 +23,7 @@ export default function AddUserModal({handleSubmit,handleCancel,setName, setUser
     }
     return(
 
-        <form className='content'>
+        <form className='adduser-content'>
             <h2 className='submit-text'>Please enter the following information</h2>
             <div className='details'>
                 <input className="input" type="text" placeholder='Full Name' onChange={handleName} />
@@ -40,7 +40,7 @@ export default function AddUserModal({handleSubmit,handleCancel,setName, setUser
             <div className='details'>
                 <select className="input" onChange={handleType} >
                     <option value="">Select type</option>
-                    <option value="instructor">Instructor</option>
+                    <option value="teacher">Instructor</option>
                     <option value="student">Student</option>
                 </select>
             </div>

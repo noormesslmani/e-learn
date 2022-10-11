@@ -13,23 +13,20 @@ export default function AddNewUser() {
     
     const handleSubmit=(e)=>{
         e.preventDefault();
-        if(name !=='' && username!=='' && email!=='' && password!=='' && phone!=''){
-            registerInstructor()
+        if(name !=='' && username!=='' && email!=='' && password!=='' && phone!='' && type!==''){
+            registerUser()
         }
     }
     console.log(type)
-    
-    const handleCancel=(e)=>{
-        e.preventDefault();
-    }
-    function registerInstructor(){
+
+    function registerUser(){
         let payload = {
           full_name: name,
           phone: phone,
           email: email,
           username: username,
           password: password,
-          type:'teacher'
+          type:type
         };
         let res = axios.post(baseURL+"register",payload)
         .then(function (response) {
@@ -41,9 +38,10 @@ export default function AddNewUser() {
         });
     }
     return( 
-        <>
-            <AddUserModal handleSubmit={handleSubmit} handleCancel={handleCancel} setName={setName}
+        <div className='add-new-user'>
+            <h1>Add a new user</h1>
+            <AddUserModal handleSubmit={handleSubmit} setName={setName}
             setUsername={setUsername} setEmail={setEmail} setPassword={setPassword} setPhone={setPhone} setType={setType} /> 
-        </> 
+        </div> 
     )
 }
