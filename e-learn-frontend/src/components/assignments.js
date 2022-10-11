@@ -75,7 +75,6 @@ export default function AssignmentList() {
             submitAssignment();
         }
     }
-
     return (
         <div className='suggested-courses' >
             <h1>Assignments</h1>
