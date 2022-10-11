@@ -14,6 +14,7 @@ export default function Landing() {
         .then(function (response) {
             console.log(response.data.data)
             setCourses(response.data.data)
+            console.log(courses);
             localStorage.setItem('courses',JSON.stringify(response.data.data))
         })
         .catch(function (error) {
