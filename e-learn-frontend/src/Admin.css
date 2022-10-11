@@ -44,6 +44,21 @@
     display: flex;
     justify-content: space-around;
 }
+.admin-submit-btn, .admin-cancel-btn{
+    background-color: rgb(195, 195, 195);
+    border-radius: 10px;
+    border:none;
+    padding:10px 20px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+.admin-submit-btn{
+    background-color: lightblue;
+}
+.admin-submit-btn:active, .admin-cancel-btn:active{
+    scale:0.9;
+}
 .message{
     color: red;
 }
