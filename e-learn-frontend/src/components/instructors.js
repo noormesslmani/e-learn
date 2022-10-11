@@ -11,7 +11,6 @@ export default function Instructors() {
         axios.get(baseURL+"users",config)
         .then(function (response) {
             setInstructors(response.data.teachers);
-            console.log(response.data.teachers)
         })
         .catch(function (error) {
             console.log(error);

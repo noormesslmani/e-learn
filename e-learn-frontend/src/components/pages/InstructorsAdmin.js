@@ -1,5 +1,5 @@
 import '../../Admin.css';
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../navbarAdmin';
 import Instructors from '../instructors';
 function InstructorsAdmin() {

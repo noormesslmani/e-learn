@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../Student.css'
 
 export default function Assignment({assignment, state}) {
@@ -8,7 +8,7 @@ export default function Assignment({assignment, state}) {
         <div className='course-card'>
             <div className='course-name' >{state.clickedCourse.name}</div>
             <div className='assignment-description'><span className='requirements'>Requirements:</span> {assignment.description}</div>
-          
+
         </div> 
         )
     }

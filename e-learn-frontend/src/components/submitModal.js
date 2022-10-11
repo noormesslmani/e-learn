@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../Student.css'
 
 export default function SubmitModal({handleSubmit,handleCancel, setSolution, submitted}) {

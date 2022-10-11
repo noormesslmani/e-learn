@@ -15,7 +15,6 @@ export default function InstructorCourses() {
         let res = axios.get(baseURL+"getcourses",config)
         .then(function (response) {
             setCourses(response.data.data);
-            console.log(response.data.data);
         })
         .catch(function (error) {
             console.log(error);

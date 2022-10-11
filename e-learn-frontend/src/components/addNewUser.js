@@ -61,7 +61,6 @@ export default function AddNewUser() {
         };
         let res = axios.post(baseURL+"register",payload)
         .then(function (response) {
-            console.log(response.data);
             if(response.data.result=='email already exists'){
                 setEmailExists(true)
             }

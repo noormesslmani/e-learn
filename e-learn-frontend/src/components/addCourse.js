@@ -17,7 +17,6 @@ export default function AddCourse() {
         let payload = {name: name, username: username, description: description, fees: fees};
         let res = axios.post(baseURL+"course",payload,config)
         .then(function (response) {
-            console.log(response.data)
             if(response.data.result=='ok'){
                 setAddModal(false)}
             else if(response.data.result=='Invalid User'){

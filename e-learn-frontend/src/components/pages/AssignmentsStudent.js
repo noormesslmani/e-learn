@@ -1,5 +1,5 @@
 import '../../Student.css';
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../navbarStudent';
 import AssignmentList from '../assignments';
 

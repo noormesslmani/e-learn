@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../Admin.css'
 import image1 from '../avatarfemale.png';
-import image2 from '../avatarmale.png';
 export default function InstructorCard({instructor}) {
-    console.log(instructor);
     return(
         <div className='instructor-card'>
             <img src={image1} className='instructor-img'></img>

@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../Admin.css'
 
 export default function AddModal({handleSubmit,handleCancel,setName, setUsername, setFees, setDescription, invalidUser, unauthorizedUser}) {
-    
     const handleName=(e)=>{
         setName(e.target.value)
     }

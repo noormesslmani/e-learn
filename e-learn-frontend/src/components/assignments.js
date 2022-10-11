@@ -37,7 +37,6 @@ export default function AssignmentList() {
             }
             else{
                 setSubmitted(true)
-                console.log(submitted)
             }
             return response.data
         })
@@ -65,7 +64,6 @@ export default function AssignmentList() {
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log(solution)
         if(solution!==''){
             submitAssignment();
         }

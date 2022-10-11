@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../Student.css'
 
 export default function CreateAssignment({setDescription,state, handleSubmitAssignment, handleCancelAssignment}) {

@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import '../App.css'
 import axios from 'axios';
 export default function RegisterForm({ displayRegister, handleSwitch }) {
- 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

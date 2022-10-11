@@ -1,5 +1,5 @@
 import '../../Admin.css';
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../navbarAdmin';
 import Landing from '../landing';
 import AddCourse from '../addCourse';

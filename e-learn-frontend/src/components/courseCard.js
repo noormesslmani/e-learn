@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../Student.css'
 import image from '../course.png';
 export default function CourseCard({course,setclickedCourse}) {
