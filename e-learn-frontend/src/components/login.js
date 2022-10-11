@@ -46,6 +46,9 @@ export default function LoginForm({ displayLogin, handleSwitch }) {
           if(response.data.type==='admin'){
             navigate("/home-admin");
           }
+          if(response.data.type==='teacher'){
+            navigate("/home-instructor");
+          }
         }
         else{
           setInvalid(true);

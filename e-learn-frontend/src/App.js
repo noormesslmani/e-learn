@@ -7,6 +7,7 @@ import CoursesStudent from './components/pages/CoursesStudent';
 import AssignmentsStudent from './components/pages/AssignmentsStudent';
 import InstructorsAdmin from './components/pages/InstructorsAdmin';
 import AddUser from './components/pages/addUser';
+import LandingInstructor from './components/pages/LandingInstructor';
 function App() {
 
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/home-admin' element={<LandingAdmin/>} />
           <Route path='/instructors-admin' element={<InstructorsAdmin/>} />
           <Route path='/add-users' element={<AddUser/>} />
+          <Route path='/home-instructor' element={<LandingInstructor/>} />
         </Routes>
       </Router>
     </>
