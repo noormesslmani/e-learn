@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../App.css'
 
-export default function AddModal({handleSubmit,handleCancel,setName, setUsername, setFees, setDescription, invalidUser, unauthorizedUser}) {
+export default function AddModal({handleSubmit,handleCancel,setName, setUsername, setFees, setDescription, invalidUser, unauthorizedUser, success}) {
     const handleName=(e)=>{
         setName(e.target.value)
     }
@@ -40,6 +40,7 @@ export default function AddModal({handleSubmit,handleCancel,setName, setUsername
                 </div>
                 {invalidUser? <div className="error-msg">Username does not exist</div>:<></> }
                 {unauthorizedUser? <div className="error-msg">This user is not an instructor</div>:<></> }
+                {success? <div className="success">Course successfully added</div>:<></>}
             </form>
         </div> 
     )
