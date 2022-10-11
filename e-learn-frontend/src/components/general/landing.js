@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import '../Student.css'
+import '../../App.css'
 import axios from 'axios';
 import CourseCard from './courseCard';
 const baseURL='http://127.0.0.1:8000/api/v1/';
@@ -11,7 +11,7 @@ export default function Landing() {
         let config = {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
         };
-        axios.get(`${baseURL}viewallcourses`,config)
+        axios.get(`${baseURL}get-all-courses`,config)
         .then(function (response) {
             setCourses(response.data.data)
             localStorage.setItem('courses',JSON.stringify(response.data.data))

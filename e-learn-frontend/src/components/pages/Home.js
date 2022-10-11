@@ -1,6 +1,6 @@
 import '../../App.css';
-import RegisterForm from '../form';
-import LoginForm from '../login';
+import RegisterForm from '../general/form';
+import LoginForm from '../general/login';
 import React, { useState } from 'react';
 
 function Home() {
@@ -16,6 +16,7 @@ function Home() {
       setDisplayLogin(false);
     }
   };
+
   return (
     <div className="App">
       <h1>Welcome to Bright E-School</h1>

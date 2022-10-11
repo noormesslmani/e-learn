@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../Admin.css'
+import '../../App.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import AddModal from './addModal';
@@ -13,19 +13,21 @@ export default function AddCourse() {
     const [username,setUsername]=useState('');
     const [invalidUser,setInvalidUser]=useState(false);
     const [unauthorizedUser,setUnauthorizedUser]=useState(false);
+    const [success,setSuccess]=useState(false);
     function submitCourse(){
         let payload = {name: name, username: username, description: description, fees: fees};
-        axios.post(`${baseURL}course`,payload,config)
+        axios.post(`${baseURL}add-course`,payload,config)
         .then(function (response) {
             if(response.data.result=='ok'){
-                setAddModal(false)}
+                setSuccess(true);
+            }
             else if(response.data.result=='Invalid User'){
-                setInvalidUser(true)
+                setInvalidUser(true);
             }
             else {
-                setUnauthorizedUser(true)
+                setUnauthorizedUser(true);
             }
-            return response.data
+            return response.data;
         })
         .catch(function (error) {
             console.log(error);
@@ -48,7 +50,7 @@ export default function AddCourse() {
         <>
             <Link className='add-course' onClick={handleClick}>Add a new course</Link>
             {addModal?(<AddModal handleSubmit={handleSubmit} handleCancel={handleCancel} setName={setName}
-            setUsername={setUsername} setDescription={setDescription} setFees={setFees} invalidUser={invalidUser} unauthorizedUser={unauthorizedUser} />):<></> } 
+            setUsername={setUsername} setDescription={setDescription} setFees={setFees} invalidUser={invalidUser} unauthorizedUser={unauthorizedUser} success={success} />):<></> } 
         </> 
     )
 }

@@ -30,7 +30,7 @@ class StudentController extends Controller
     }
     public function enroll(Request $request){
         $course_id=$request->course_id;
-        Enrollment::insert([
+        Enrollment::create([
             'student_id' =>Auth::user()->id,
             'course_id' => $course_id,
             'created_at' => date('d-m-y h:i:s'),
@@ -69,5 +69,4 @@ class StudentController extends Controller
         ]);  
         return response()->json(["result" => "ok"], 201);
     }
-
 }

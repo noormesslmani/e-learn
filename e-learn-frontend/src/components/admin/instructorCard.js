@@ -1,6 +1,6 @@
 import React from 'react';
-import '../Admin.css'
-import image1 from '../avatarfemale.png';
+import '../../App.css'
+import image1 from '../../avatarfemale.png';
 export default function InstructorCard({instructor}) {
     return(
         <div className='instructor-card'>

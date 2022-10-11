@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Student.css'
+import '../../App.css';
 
 export default function SubmitModal({handleSubmit,handleCancel, setSolution, submitted}) {
     const handleChange=(e)=>{
@@ -14,7 +14,7 @@ export default function SubmitModal({handleSubmit,handleCancel, setSolution, sub
                     <button className='submit-btn' onClick={handleSubmit}>Submit</button>
                     <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
                 </div>
-                {submitted? <div class='submitted-message'>Solution already submitted</div>: <></> }
+                {submitted? <div className="error-msg">Solution already submitted</div>: <></> }
             </div>
         </div> 
     )

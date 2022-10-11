@@ -1,7 +1,7 @@
-import '../../Admin.css';
+import '../../App.css';
 import React from 'react';
-import Navbar from '../navbarAdmin';
-import Instructors from '../instructors';
+import Navbar from '../admin/navbarAdmin';
+import Instructors from '../admin/instructors';
 function InstructorsAdmin() {
     return (
         <>

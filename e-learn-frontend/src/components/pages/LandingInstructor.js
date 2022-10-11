@@ -1,7 +1,7 @@
-import '../../Student.css';
+import '../../App.css';
 import React from 'react';
-import Navbar from '../navbarInstructor';
-import Landing from '../landing';
+import Navbar from '../instructor/navbarInstructor';
+import Landing from '../general/landing';
 
 function LandingInstructor() {
     console.log(localStorage)

@@ -25,25 +25,19 @@ class RegisterController extends Controller
             "password" => "required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/"
         ]);
         if ($validator->fails()) {
-            return response()->json([
-                "result" => "Validation failed"
-            ]);
+            return response()->json(["result" => "Validation failed" ]);
         }
-        $type=$request->type;
-        $user_type_id=Type::select('id')->where('type',$type)->get()[0]["_id"];
+        
+        //check if username or email are taken
         if(User::where('email',$request->email)->exists() ){
-            return response()->json([
-                "result" => "email already exists"
-            ]);
-        }
-        //check if username is taken
+            return response()->json(["result" => "email already exists"]);}
+
         if(User::where('username',$request->username)->exists() ){
-            return response()->json([
-                "result" => "username is taken"
-            ]);
-        }
-        //insert data in users
-        User::insert([
+            return response()->json([ "result" => "username is taken"]);}
+
+        //create a new user
+        $user_type_id=Type::select('id')->where('type',$request->type)->get()[0]["_id"];
+        User::create([
             'full_name' =>$request->full_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -54,13 +48,5 @@ class RegisterController extends Controller
             'created_at'=>date('d-m-y h:i:s')
         ]);  
         return response()->json(["result" => "ok"], 201);  
-    }
-
-    public function addInstructor(Request $request){
-        return $this->createAccount($request);
-    }
-
-    public function addStudent(Request $request){
-        return $this->createAccount($request);
     }
 }

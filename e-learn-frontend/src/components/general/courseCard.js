@@ -1,6 +1,6 @@
 import React from 'react';
-import '../Student.css'
-import image from '../course.png';
+import '../../App.css'
+import image from '../../course.png';
 export default function CourseCard({course,setclickedCourse}) {
     const handleClick=()=>{
         setclickedCourse(course)

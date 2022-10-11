@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import '../Student.css'
+import '../../App.css'
 import axios from 'axios';
-import CourseCard from './courseCard';
+import CourseCard from '../general/courseCard';
 import { useNavigate } from "react-router-dom";
 const baseURL='http://127.0.0.1:8000/api/v1/';
 
@@ -12,7 +12,7 @@ export default function InstructorCourses() {
     const [clickedCourse, setclickedCourse] = useState('');
     useEffect(() => {
         setclickedCourse('');
-        axios.get(`${baseURL}getcourses`,config)
+        axios.get(`${baseURL}get-courses`,config)
         .then(function (response) {
             setCourses(response.data.data);
         })

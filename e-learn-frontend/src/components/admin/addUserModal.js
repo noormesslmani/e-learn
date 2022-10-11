@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import '../Admin.css'
+import React from 'react';
+import '../../App.css'
 
 export default function AddUserModal({handleSubmit,setName, setUsername, setEmail, setPassword, setPhone, setType, success, emailExists, usernameExists, validPassword, validEmail, allEntered}) {
  
@@ -50,12 +50,12 @@ export default function AddUserModal({handleSubmit,setName, setUsername, setEmai
             <div class="btns">
                 <button className='admin-submit-btn' onClick={handleSubmit}>Confirm</button>
             </div>
-            {success? (<div className='user-add-success'>User successfully added</div>): <></>}
-            {emailExists? (<div className='user-email-exists'>Email is already registered</div>): <></>}
-            {usernameExists? (<div className='user-username-exists'>Username is already taken</div>): <></>}
-            {!(allEntered)? (<div className='user-username-exists'>Please enter all fields</div>): <></>}
-            {!(validEmail)? (<div className='user-username-exists'>Please enter a valid email</div>): <></>}
-            {!(validPassword)? (<div className='user-username-exists'><p>The password must at least 8 characters long. <br/>
+            {success? (<div className='success'>User successfully added</div>): <></>}
+            {emailExists? (<div className="error-msg">Email is already registered</div>): <></>}
+            {usernameExists? (<div className="error-msg">Username is already taken</div>): <></>}
+            {!(allEntered)? (<div className="error-msg">Please enter all fields</div>): <></>}
+            {!(validEmail)? (<div className="error-msg">Please enter a valid email</div>): <></>}
+            {!(validPassword)? (<div className="error-msg"><p>The password must at least 8 characters long. <br/>
             It must contain at least one uppercase letter, <br/>one lower case letter,<br/>and one digit number</p></div>): <></>}
         </form>
     )

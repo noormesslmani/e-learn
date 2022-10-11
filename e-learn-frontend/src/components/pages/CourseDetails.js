@@ -1,11 +1,11 @@
-import '../../Student.css';
+import '../../App.css';
 import React, { useState, useEffect } from 'react';
-import Navbar from '../navbarInstructor';
+import Navbar from '../instructor/navbarInstructor';
 import { useLocation} from 'react-router-dom';
-import Assignment from '../assignmentInstructor';
+import Assignment from '../instructor/assignmentInstructor';
 import axios from 'axios';
-import CreateAssignment from '../createAssignment';
-import EnrollStudent from '../enrollStudent';
+import CreateAssignment from '../instructor/createAssignment';
+import EnrollStudent from '../instructor/enrollStudent';
 const baseURL='http://127.0.0.1:8000/api/v1/';
 function CourseDetails() {
     let config = {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},};
@@ -20,7 +20,7 @@ function CourseDetails() {
     const { state } = useLocation();
     useEffect(() => {
         let payload= {course_id: state.clickedCourse._id}
-        axios.post(`${baseURL}getassignments`,payload,config)
+        axios.post(`${baseURL}get-assignments`,payload,config)
         .then(function (response) {
             setAssignments(response.data.data);
         })
@@ -62,7 +62,7 @@ function CourseDetails() {
     }
     function createNewAssignment(){
         let payload= {course_id: state.clickedCourse._id, description: description}
-        axios.post(`${baseURL}assignment`,payload,config)
+        axios.post(`${baseURL}create-assignment`,payload,config)
         .then(function (response) {
             if(response.data.result=='ok'){
                 setAssignmentModal(false);
@@ -75,7 +75,7 @@ function CourseDetails() {
     }
     function enrollStudent(){
         let payload= {course_id: state.clickedCourse._id, username: username}
-        axios.post(`${baseURL}enrollstudent`,payload,config)
+        axios.post(`${baseURL}enroll-student`,payload,config)
         .then(function (response) {
             console.log(response.data.result)
             if(response.data.result=='ok'){
