@@ -1,0 +1,86 @@
+body{
+  background-image: url("background.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+h1{
+  color: white;
+  font-size: 40px;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px 50px;
+}
+ .form{
+  margin-top: 10px;
+  width: fit-content;
+  align-self: center;
+  background-color:gainsboro;
+  padding: 20px 40px;
+  border-radius: 10px;
+ }
+.label{
+  display: block;
+  font-size: larger;
+  padding: 5px;
+}
+ 
+.input{
+  font-size: larger;
+  padding: 5px;
+  margin: 2px;
+  border: none;
+  border-radius: 5px;
+}
+.btn{
+  background-color: lightblue;
+  border-radius: 5px;
+  border: none;
+  font-size: larger;
+  display: block;
+  padding: 5px;
+  margin: 10px auto;
+  cursor: pointer;
+}
+.btn:active{
+ scale: 0.9;
+}
+ 
+.messages{
+  display: flex;
+  justify-content: center;
+}
+ 
+.error, .exist, .invalid{
+  color: red;
+}
+ 
+.success{
+  color: green;
+}
+.switch-to-signin, .switch-to-register{
+  color: lightskyblue;
+  font-weight: bold;
+  cursor: pointer;
+}
+.header{
+  display: flex;
+  justify-content: center;
+  background-color: gainsboro;
+}
+.course-links{
+  color: white;
+  font-weight: bolder;
+  font-size: 20px;
+  text-decoration: none;
+  margin: 10px;
+  cursor: pointer;
+}
+.course-links:hover{
+  text-decoration: underline;
+}
