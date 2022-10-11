@@ -82,5 +82,25 @@ class TeacherController extends Controller
         }  
         return response()->json(["result" => "ok", "data"=>$data], 201); 
     }
+
+    public function enrollStudent(Request $request){
+        try{
+            $user=User::where('username', $request->username)->get()[0];
+        }
+        catch(\Exception $e){
+            return response()->json(["result" => "user does not exist"]); 
+        } 
+        if($user->type()->get()[0]['type']=='student'){
+            Enrollment::insert([
+                'student_id' =>$user['_id'],
+                'course_id' => $request->course_id,
+                'created_at' => date('d-m-y h:i:s'),
+            ]);
+            return response()->json(["result" => "ok"], 201); 
+        }
+        else {
+            return response()->json(["result" => "invalid user type"]); 
+        }
+    }
     
 }

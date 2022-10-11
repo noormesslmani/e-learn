@@ -12,10 +12,10 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('/assignment', [TeacherController::class, 'createAssignment']);
         Route::post('/announcement', [TeacherController::class, 'createAnnouncement']);
         Route::get('/getcourses', [TeacherController::class, 'getCourses']);
-        Route::post('/studentscount', [TeacherController::class, 'countStudents']);
         Route::post('/getassignments', [TeacherController::class, 'getAssignments']);
         Route::post('/getannouncements', [TeacherController::class, 'getAnnouncements']);
-        
+        Route::post('/enrollstudent', [TeacherController::class, 'enrollStudent']);
+
         Route::post('/course', [AdminController::class, 'addCourse']);
         
 
