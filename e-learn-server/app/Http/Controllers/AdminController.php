@@ -49,4 +49,17 @@ class AdminController extends Controller
         }
         return response()->json(["result" => "Unauthorized"]);
     }
+    public function getUsers(){
+        $teachers=[];
+        $students=[];
+        foreach(User::all() as $user){
+            if($user->type()->get()[0]['type']=='teacher'){
+                $teachers[]=$user;
+            }
+            else if($user->type()->get()[0]['type']=='student'){
+                $students[]=$user;
+            }
+        }
+        return response()->json(["result" => "ok", "teachers"=>$teachers, "students"=>$students], 201); 
+    }
 }

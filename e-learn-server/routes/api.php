@@ -17,7 +17,8 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('/getannouncements', [TeacherController::class, 'getAnnouncements']);
         
         Route::post('/course', [AdminController::class, 'addCourse']);
-    
+        
+
         Route::post('/instructoradd', [RegisterController::class, 'addInstructor']);
         Route::post('/studentadd', [RegisterController::class, 'addStudent']);
 
@@ -27,7 +28,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('/getstudentassignments', [StudentController::class, 'getStudentAssignments']);
         Route::post('/submitassignment', [StudentController::class, 'submitAssignment']);
     });
-    
+    Route::get('/users', [AdminController::class, 'getUsers']);
     Route::post('/register', [RegisterController::class, 'createAccount']);
     Route::post('/login', [AuthController::class, 'login']);
 });
