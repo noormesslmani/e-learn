@@ -11,7 +11,7 @@ export default function Landing() {
         let config = {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},
         };
-        axios.get(baseURL+"viewallcourses",config)
+        axios.get(`${baseURL}viewallcourses`,config)
         .then(function (response) {
             setCourses(response.data.data)
             localStorage.setItem('courses',JSON.stringify(response.data.data))

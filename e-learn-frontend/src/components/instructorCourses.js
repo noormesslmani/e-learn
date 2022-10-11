@@ -12,7 +12,7 @@ export default function InstructorCourses() {
     const [clickedCourse, setclickedCourse] = useState('');
     useEffect(() => {
         setclickedCourse('');
-        let res = axios.get(baseURL+"getcourses",config)
+        axios.get(`${baseURL}getcourses`,config)
         .then(function (response) {
             setCourses(response.data.data);
         })

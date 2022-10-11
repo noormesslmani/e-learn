@@ -59,7 +59,7 @@ export default function AddNewUser() {
           password: password,
           type:type
         };
-        let res = axios.post(baseURL+"register",payload)
+        axios.post(`${baseURL}register`,payload)
         .then(function (response) {
             if(response.data.result=='email already exists'){
                 setEmailExists(true)

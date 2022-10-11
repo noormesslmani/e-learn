@@ -20,7 +20,7 @@ function CourseDetails() {
     const { state } = useLocation();
     useEffect(() => {
         let payload= {course_id: state.clickedCourse._id}
-        let res = axios.post(baseURL+"getassignments",payload,config)
+        axios.post(`${baseURL}getassignments`,payload,config)
         .then(function (response) {
             setAssignments(response.data.data);
         })
@@ -62,7 +62,7 @@ function CourseDetails() {
     }
     function createNewAssignment(){
         let payload= {course_id: state.clickedCourse._id, description: description}
-        let res = axios.post(baseURL+"assignment",payload,config)
+        axios.post(`${baseURL}assignment`,payload,config)
         .then(function (response) {
             if(response.data.result=='ok'){
                 setAssignmentModal(false);
@@ -75,7 +75,7 @@ function CourseDetails() {
     }
     function enrollStudent(){
         let payload= {course_id: state.clickedCourse._id, username: username}
-        let res = axios.post(baseURL+"enrollstudent",payload,config)
+        axios.post(`${baseURL}enrollstudent`,payload,config)
         .then(function (response) {
             console.log(response.data.result)
             if(response.data.result=='ok'){

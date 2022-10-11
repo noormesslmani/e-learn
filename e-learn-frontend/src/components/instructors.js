@@ -8,7 +8,7 @@ export default function Instructors() {
     let config = {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},};
     const [instructors, setInstructors] = useState([]);
     useEffect(() => {
-        axios.get(baseURL+"users",config)
+        axios.get(`${baseURL}users`,config)
         .then(function (response) {
             setInstructors(response.data.teachers);
         })

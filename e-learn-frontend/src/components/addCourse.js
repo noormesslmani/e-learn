@@ -15,7 +15,7 @@ export default function AddCourse() {
     const [unauthorizedUser,setUnauthorizedUser]=useState(false);
     function submitCourse(){
         let payload = {name: name, username: username, description: description, fees: fees};
-        let res = axios.post(baseURL+"course",payload,config)
+        axios.post(`${baseURL}course`,payload,config)
         .then(function (response) {
             if(response.data.result=='ok'){
                 setAddModal(false)}

@@ -8,7 +8,7 @@ export default function Courses() {
     let config = {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},};
     const [courses, setCourses] = useState([]);
     useEffect(() => {
-        let res = axios.get(baseURL+"getenrolledcourses",config)
+        axios.get(`${baseURL}getenrolledcourses`,config)
         .then(function (response) {
             setCourses(response.data.courses)
         })

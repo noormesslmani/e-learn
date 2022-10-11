@@ -29,7 +29,7 @@ export default function AssignmentList() {
     
     function submitAssignment(){
         let payload = {assignment_id: id, solution:solution};
-        let res = axios.post(baseURL+"submitassignment",payload,config)
+        axios.post(`${baseURL}submitassignment`,payload,config)
         .then(function (response) {
             console.log(response.data)
             if(response.data.result=='ok'){

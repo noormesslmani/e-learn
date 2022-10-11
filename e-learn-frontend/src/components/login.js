@@ -31,7 +31,7 @@ export default function LoginForm({ displayLogin, handleSwitch }) {
       email: email,
       password: password,
     };
-    let res = axios.post(baseURL+"login",payload)
+    axios.post(`${baseURL}login`,payload)
     .then(function (response) {
         if(response.data.status=='success'){
           localStorage.setItem('user',JSON.stringify(response.data.user));
