@@ -37,6 +37,7 @@ export default function AddCourse() {
     const handleClick=()=>{
         setInvalidUser(false)
         setUnauthorizedUser(false)
+        setSuccess(false);
         setAddModal(true);
     }
     const handleSubmit=(e)=>{
