@@ -43,6 +43,7 @@ class AdminController extends Controller
         $teachers=[];
         $students=[];
         foreach(User::all() as $user){
+        
             if($user->type()->get()[0]['type']=='teacher'){
                 $teachers[]=$user;
             }
