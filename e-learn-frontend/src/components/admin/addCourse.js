@@ -19,6 +19,7 @@ export default function AddCourse() {
         let payload = {name: name, username: username, description: description, fees: fees};
         axios.post(`${baseURL}add-course`,payload,config)
         .then(function (response) {
+            console.log(response.data)
             if(response.data.result=='ok'){
                 setSuccess(true);
             }
