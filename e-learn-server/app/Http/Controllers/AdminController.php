@@ -29,7 +29,7 @@ class AdminController extends Controller
 
         if($user_type=='teacher'){
             $id=User::where('username',$request->username)->get()[0]['_id'];
-            Course::create([
+            Course::insert([
                 'name' =>$request->name,
                 'description' => $request->description,
                 'fees' => $request->fees,

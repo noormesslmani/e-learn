@@ -37,7 +37,7 @@ class RegisterController extends Controller
 
         //create a new user
         $user_type_id=Type::select('id')->where('type',$request->type)->get()[0]["_id"];
-        User::create([
+        User::insert([
             'full_name' =>$request->full_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),

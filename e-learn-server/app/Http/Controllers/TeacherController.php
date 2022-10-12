@@ -23,7 +23,7 @@ class TeacherController extends Controller
                 "message" => "Validation failed"
             ]);
         }
-        Assignment::create([
+        Assignment::insert([
             'description' =>$request->description,
             'created_at' => date('d-m-y h:i:s'),
             'course_id'=> $request->course_id,
@@ -40,7 +40,7 @@ class TeacherController extends Controller
         if ($validator->fails()) {
             return response()->json(["message" => "Validation failed"]);
         }
-        Announcement::create([
+        Announcement::insert([
             'teacher_id' => Auth::user()->id,
             'course_id' => $request->course_id,
             'details' => $request->details,
@@ -84,7 +84,7 @@ class TeacherController extends Controller
             return response()->json(["result" => "user does not exist"]); 
         } 
         if($user->type()->get()[0]['type']=='student'){
-            Enrollment::create([
+            Enrollment::insert([
                 'student_id' =>$user['_id'],
                 'course_id' => $request->course_id,
                 'created_at' => date('d-m-y h:i:s'),
