@@ -22,7 +22,7 @@ export default function AddCourse() {
             if(response.data.result=='ok'){
                 setSuccess(true);
             }
-            else if(response.data.result=='Invalid User'){
+            else if(response.data.result=='user does not exist'){
                 setInvalidUser(true);
             }
             else {
@@ -42,6 +42,9 @@ export default function AddCourse() {
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
+        setInvalidUser(false)
+        setUnauthorizedUser(false)
+        setSuccess(false);
         submitCourse();
     }
     const handleCancel=(e)=>{
