@@ -10,6 +10,7 @@ export default function Instructors() {
     useEffect(() => {
         axios.get(`${baseURL}users`,config)
         .then(function (response) {
+            console.log(response.data.teachers);
             setInstructors(response.data.teachers);
         })
         .catch(function (error) {
