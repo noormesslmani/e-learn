@@ -24,7 +24,7 @@ class AdminController extends Controller
         ]);
         if ($validator->fails()) {return response()->json(["message" => "Validation failed"]);}
 
-        try {$user_type=User::where('username',$request->username)->first()->type()->get()[0]['type'];}
+        try {$user=User::where('username',$request->username)->get()[0]['type'];}
         catch(\Exception $e) {return response()->json(["result" => "user does not exist"]); } 
 
         if($user_type=='teacher'){

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import AddModal from './addModal';
 const baseURL='http://127.0.0.1:8000/api/v1/';
 export default function AddCourse() {  
-    let config = {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},};
+    
     const [addModal,setAddModal]=useState(false);
     const [name,setName]=useState('');
     const [fees,setFees]=useState('');
@@ -15,6 +15,7 @@ export default function AddCourse() {
     const [unauthorizedUser,setUnauthorizedUser]=useState(false);
     const [success,setSuccess]=useState(false);
     function submitCourse(){
+        let config = {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`},};
         let payload = {name: name, username: username, description: description, fees: fees};
         axios.post(`${baseURL}add-course`,payload,config)
         .then(function (response) {
