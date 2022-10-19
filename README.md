@@ -1,5 +1,5 @@
 # e-learn
-###An e-learning system implemented using Laravel, React and MongoDB:   
+### An e-learning system implemented using Laravel, React and MongoDB:   
 Admins shall be able to add instructors, students and courses   
 Admins shall be able to assign instructors to courses   
 Instructors shall be able to add students   
